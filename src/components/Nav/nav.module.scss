@@ -1,0 +1,20 @@
+@import "../../style/vars.scss";
+.nav {
+  margin-bottom: 50px;
+  .nav-container {
+    @extend %container;
+    .nav-items {
+      display: flex;
+      gap: 24px;
+      overflow: hidden;
+      white-space: nowrap;
+      justify-content: center;
+      @media (max-width: 1200px) {
+        justify-content: start;
+      }
+      @media (max-width: 992px) {
+        gap: 20px;
+      }
+    }
+  }
+}

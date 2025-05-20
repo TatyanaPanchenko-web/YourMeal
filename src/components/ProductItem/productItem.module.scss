@@ -1,0 +1,71 @@
+@import "../../style/vars.scss";
+.meal-menu-item {
+  background-color: $accentTextColor;
+  border-radius: 18px;
+  gap: 42px;
+  padding: 12px;
+  @media (max-width: 992px) {
+  }
+  @media (max-width: 768px) {
+    padding: 4px;
+  }
+  .meal-menu-inner {
+    position: relative;
+    cursor: pointer;
+    .meal-menu-promotion {
+      position: absolute;
+      z-index: 10;
+      top: 10px;
+      right: 10px;
+      border-radius: 5px;
+      width: 70px;
+      height: 30px;
+      background-color: $secondaryaccentTextColor;
+      color: $accentTextColor;
+      font-size: 20px;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .meal-menu-img {
+      max-width: 276px;
+      border-radius: 12px;
+      position: relative;
+      padding-bottom: 79.71%;
+      overflow: hidden;
+      @media (max-width: 768px) {
+        min-width: 137px;
+        width: 100%;
+      }
+      img {
+        min-width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+    .meal-menu-price {
+      padding-top: 16px;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      @media (max-width: 992px) {
+        font-size: 20px;
+      }
+    }
+    .meal-menu-name {
+      margin-bottom: 29px;
+    }
+    .meal-menu-weight {
+      font-weight: 600;
+      color: $shadowColor;
+      margin-bottom: 8px;
+    }
+  }
+
+  .meal-menu-btn {
+    @include btnStyle;
+  }
+}

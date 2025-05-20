@@ -1,0 +1,80 @@
+@import "../../style/vars.scss";
+
+.registration-wrapper {
+  background-color: $bgColor;
+  padding: 20px 16px;
+  .registration-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 18px;
+    font-family: "Nunito", sans-serif;
+  }
+  .registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 300px;
+
+    .registration-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 15px;
+      input {
+        border-radius: 12px;
+        border: 1px solid $btnColor;
+        outline: none;
+        padding: 12px;
+        font-size: 10px;
+      }
+      input::placeholder {
+        color: $shadowColor;
+      }
+    }
+    label {
+      margin-right: 15px;
+      font-size: 10px;
+      width: 100%;
+      :global {
+        .ant-checkbox-inner {
+          border-color: $btnColor;
+        }
+        .ant-checkbox-checked .ant-checkbox-inner {
+          background-color: $secondaryaccentTextColor;
+        }
+        .ant-checkbox-wrapper:hover .ant-checkbox:hover .ant-checkbox-inner {
+          background-color: transparent;
+          border-color: $secondaryaccentTextColor;
+        }
+      }
+    }
+    .registration-date {
+      display: flex;
+      flex-direction: column;
+      color: rgba(0, 0, 0, 0.8);
+      p {
+        padding-left: 12px;
+      }
+      input {
+        color: $shadowColor;
+      }
+    }
+    input[type="submit"] {
+      margin-top: 15px;
+      background-color: $secondaryaccentTextColor;
+      color: $accentTextColor;
+      font-size: 16px;
+      padding: 12px 0;
+      height: auto;
+      border: none;
+      outline: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .errorField {
+      font-size: 12px;
+      color: $secondaryaccentTextColor;
+    }
+  }
+}

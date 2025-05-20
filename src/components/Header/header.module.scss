@@ -1,0 +1,20 @@
+@import "../../style/vars.scss";
+
+.header {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+  .header-container {
+    .header-logo {
+      padding-top: 22px;
+      text-align: center;
+      color: $accentTextColor;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

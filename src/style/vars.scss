@@ -1,0 +1,33 @@
+$accentTextColor: #ffffff;
+$secondaryaccentTextColor: #ff5c00;
+$accentBgColor: #ffab08;
+$bgColor: #f9f9f9;
+$btnColor: #f2f2f3;
+$textColor: #000000;
+$shadowColor: #b1b1b1;
+
+%container {
+  max-width: 1330px;
+  padding: 0 20px;
+  margin: 0 auto;
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
+}
+@mixin btnStyle($color: $textColor, $bgColor: $btnColor) {
+  color: $color;
+  background-color: $bgColor;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 12px;
+  height: 40px;
+  width: 100%;
+  justify-content: center;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  @media (max-width: 992px) {
+    width: 100%;
+    padding: 9px;
+  }
+}

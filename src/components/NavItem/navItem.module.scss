@@ -1,0 +1,20 @@
+@import "../../style/vars.scss";
+.nav-item {
+  display: flex;
+  gap: 8px;
+  background-color: $accentTextColor;
+  padding: 8px 14px;
+  border-radius: 50px;
+  align-items: center;
+  transition: all 0.5s linear;
+  .nav-img {
+    img {
+      display: block;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+.active {
+  background-color: $accentBgColor;
+}
