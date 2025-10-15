@@ -71,6 +71,10 @@
       outline: none;
       border-radius: 12px;
       cursor: pointer;
+      transition: background-color 0.3s linear;
+      &:hover {
+        background-color: $secondaryaccentHoverColor;
+      }
     }
     .errorField {
       font-size: 12px;

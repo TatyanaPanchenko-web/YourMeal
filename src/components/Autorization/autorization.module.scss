@@ -50,6 +50,10 @@
       padding: 12px 0;
       height: auto;
       cursor: pointer;
+      transition: background-color 0.3s linear;
+      &:hover {
+        background-color: $secondaryaccentHoverColor;
+      }
     }
     .errorField {
       font-size: 12px;

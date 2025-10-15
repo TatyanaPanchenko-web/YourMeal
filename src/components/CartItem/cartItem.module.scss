@@ -27,12 +27,10 @@
         color: $shadowColor;
         margin-bottom: 10px;
       }
-      .item-price {
-      }
     }
   }
   .item-counter {
-    background-color: $btnColor;
+        background-color: $btnColor;
     border-radius: 12px;
     display: flex;
     column-gap: 15px;

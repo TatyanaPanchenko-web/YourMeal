@@ -4,10 +4,8 @@
   border-radius: 18px;
   gap: 42px;
   padding: 12px;
-  @media (max-width: 992px) {
-  }
   @media (max-width: 768px) {
-    padding: 4px;
+    padding: 8px;
   }
   .meal-menu-inner {
     position: relative;
@@ -35,8 +33,8 @@
       padding-bottom: 79.71%;
       overflow: hidden;
       @media (max-width: 768px) {
-        min-width: 137px;
         width: 100%;
+        padding-bottom: 10px;
       }
       img {
         min-width: 100%;
@@ -44,6 +42,10 @@
         position: absolute;
         top: 0;
         left: 0;
+        @media (max-width: 768px) {
+          width: 100%;
+          position: relative;
+        }
       }
     }
     .meal-menu-price {

@@ -1,5 +1,6 @@
 $accentTextColor: #ffffff;
 $secondaryaccentTextColor: #ff5c00;
+$secondaryaccentHoverColor: #c54800;
 $accentBgColor: #ffab08;
 $bgColor: #f9f9f9;
 $btnColor: #f2f2f3;
@@ -14,7 +15,12 @@ $shadowColor: #b1b1b1;
     padding: 10px;
   }
 }
-@mixin btnStyle($color: $textColor, $bgColor: $btnColor) {
+@mixin btnStyle(
+  $color: $textColor,
+  $bgColor: $btnColor,
+  $hoverColorBg: $secondaryaccentTextColor,
+  $hoverColorText: $accentTextColor
+) {
   color: $color;
   background-color: $bgColor;
   display: inline-flex;
@@ -26,6 +32,11 @@ $shadowColor: #b1b1b1;
   border: none;
   font-size: 12px;
   cursor: pointer;
+  transition: background-color 0.3s linear;
+  &:hover {
+    background-color: $hoverColorBg;
+    color: $hoverColorText;
+  }
   @media (max-width: 992px) {
     width: 100%;
     padding: 9px;

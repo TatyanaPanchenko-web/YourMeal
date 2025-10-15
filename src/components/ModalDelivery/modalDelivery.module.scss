@@ -13,8 +13,7 @@
   background-color: rgba(0, 0, 0, 0.8);
   &-container {
     position: relative;
-    width: 524px;
-    padding: 24px;
+    padding: 40px 60px;
     background-color: rgba(255, 255, 255, 1);
     border-radius: 24px;
     background-color: $bgColor;
@@ -30,15 +29,16 @@
     .modal-title {
       font-size: 16px;
       margin-bottom: 18px;
+      text-align: center;
     }
     .modal-inner {
-      width: 300px;
       font-size: 10px;
+      margin: auto;
       .delivery-form {
         display: flex;
         flex-direction: column;
         gap: 8px;
-        width: 300px;
+        min-width: 400px;
         input {
           border-radius: 12px;
           border: 1px solid $btnColor;
@@ -119,6 +119,10 @@
           padding: 12px 0;
           height: auto;
           cursor: pointer;
+          transition: background-color 0.3s linear;
+          &:hover {
+            background-color: $secondaryaccentHoverColor;
+          }
         }
         .errorField {
           font-size: 12px;

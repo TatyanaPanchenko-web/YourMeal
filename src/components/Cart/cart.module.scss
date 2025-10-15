@@ -46,7 +46,11 @@
         }
       }
       .cart-order {
-        @include btnStyle($accentTextColor, $secondaryaccentTextColor);
+        @include btnStyle(
+          $accentTextColor,
+          $secondaryaccentTextColor,
+          $secondaryaccentHoverColor
+        );
       }
       .cart-none {
         display: none;

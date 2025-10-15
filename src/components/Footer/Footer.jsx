@@ -20,15 +20,19 @@ export default function Footer() {
             <div className={style["footer-social"]}>
               <div className={style["footer-title"]}>Мы в соцсетях</div>
               <div className={style["footer-content"]}>
-                <img src={telegram} alt="telegram" />
-                <img src={vk} alt="telegvkram" />
+                <a href="https://web.telegram.org/" target="_blank">
+                  <img src={telegram} alt="telegram" />
+                </a>
+
+                <a href="https://vk.com/" target="_blank">
+                  <img src={vk} alt="vk" />
+                </a>
               </div>
             </div>
           </div>
         </div>
         <div className={style["footer-bottom"]}>
-          <div>© YouMeal, 2022</div>
-          <div>Design: Anastasia Ilina</div>
+          <div>© YouMeal, 2024</div>
         </div>
       </div>
     </footer>

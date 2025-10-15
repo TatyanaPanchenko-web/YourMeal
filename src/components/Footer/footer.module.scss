@@ -49,7 +49,12 @@
         .footer-social {
           .footer-content {
             img {
+              cursor: pointer;
               padding-right: 16px;
+              transition: transform 0.3s linear;
+              &:hover {
+                transform: translateY(3px);
+              }
             }
           }
         }

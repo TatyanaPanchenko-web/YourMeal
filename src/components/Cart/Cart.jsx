@@ -69,13 +69,14 @@ export default function Cart({ cartElements, upload, activeTab, dataAuth }) {
           ) : null}
         </div>
       </div>
-      {modalDeliveryStatus ? (
+      {console.log(modalDeliveryStatus)}
+      {modalDeliveryStatus && (
         <ModalDelivery
           setModalDeliveryStatus={setModalDeliveryStatus}
           dataAuth={dataAuth}
           upload={upload}
         />
-      ) : null}
+      )}
     </div>
   );
 }

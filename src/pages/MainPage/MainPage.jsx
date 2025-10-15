@@ -20,6 +20,7 @@ export default function MainPage({ dataAuth }) {
     setStatus,
     dataKeys: cartElements.dataKeys,
   };
+  console.log(upload);
   const [activeTab, setActiveTab] = useState({
     img: "./nav/burgers.png",
     name: "Бургеры",
