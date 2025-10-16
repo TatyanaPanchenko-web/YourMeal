@@ -11,7 +11,11 @@ body {
   color: $textColor;
   background-color: $bgColor;
   height: 100%;
+  .link {
+    text-align: center;
+  }
   @media (max-width: 320px) {
     font-size: 12px;
+    font-size: 16px;
   }
 }

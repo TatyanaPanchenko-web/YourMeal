@@ -27,8 +27,8 @@ export default function MainPage({ dataAuth }) {
     product_name: "burgers",
   });
   useEffect(() => {
-    const productsServer = getData(activeTab.product_name);
-    const cartServer = getData("cart");
+    const productsServer = getData(`products/${activeTab.product_name}`);
+      const cartServer = getData("cart");
     Promise.allSettled([productsServer, cartServer]).then((results) => {
       if (results[0].status === "fulfilled") {
         setProducts({ data: results[0].value || [], status: true });

@@ -44,6 +44,9 @@
             background-image: url("../../assets/footer/phone.png");
             background-repeat: no-repeat;
             padding-left: 28px;
+            &-phone {
+              color: $textColor;
+            }
           }
         }
         .footer-social {
@@ -66,7 +69,7 @@
           font-size: 20px;
         }
         @media (max-width: 320px) {
-          font-size: 18px;
+          font-size: 16px;
           margin-bottom: 8px;
         }
       }

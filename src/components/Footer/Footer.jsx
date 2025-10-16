@@ -15,7 +15,14 @@ export default function Footer() {
           <div className={style["footer-inner"]}>
             <div className={style["footer-phone"]}>
               <div className={style["footer-title"]}>Номер для заказа</div>
-              <div className={style["footer-content"]}>+7(930)833-38-11</div>
+              <div className={style["footer-content"]}>
+                <a
+                  href="tel:+79308333811"
+                  className={style["footer-content-phone"]}
+                >
+                  +7(930)833-38-11
+                </a>
+              </div>
             </div>
             <div className={style["footer-social"]}>
               <div className={style["footer-title"]}>Мы в соцсетях</div>

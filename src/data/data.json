@@ -1,0 +1,816 @@
+{
+  "burgers": [
+    {
+      "colorie": "ккал 430",
+      "count": 1,
+      "description": "Супер мясное наслаждение! Большая рубленая котлета из свежего говяжьего мяса покорит вас своей сочностью, а хрустящие листья салата добавят свежести.",
+      "id": "1f7b",
+      "ingredients": [
+        "пшеничная булочка",
+        "котлета из говядины",
+        "красный лук",
+        "листья салата",
+        "соус горчичный"
+      ],
+      "name": "Мясная бомба",
+      "price": "689",
+      "promotion": false,
+      "weight": "520г"
+    },
+    {
+      "count": 1,
+      "description": "Большой бургер с двумя сочными мраморными бифштексами из натуральной говядины на карамелизированной булочке, заправленной горчицей, кетчупом, луком и косочком огурчика.",
+      "id": "6350",
+      "ingredients": [
+        "пшеничная булочка",
+        "бифштекс",
+        "лук",
+        "огурец",
+        "томат",
+        "кетчуп",
+        "приправа для гриля",
+        "горчичный соус"
+      ],
+      "name": "Тяжелый удар",
+      "price": "480",
+      "promotion": true,
+      "weight": "470г"
+    },
+    {
+      "count": 1,
+      "description": "Сочный бифштекс из натуральной говядины, приготовленный на гриле, три сыра: нежный эмменталь, ароматный пармезан, сливочный чеддер, булочка с кунжутом, кетчуп, горчичный соус, свежий лук и огурчик.",
+      "id": "60fa",
+      "ingredients": [
+        "булочка с кунжутом",
+        "бифштекс",
+        "лук",
+        "огурец",
+        "кетчуп",
+        "сыр эмменталь",
+        "сыр чеддер",
+        "сыр пармезан",
+        "горчица"
+      ],
+      "name": "Супер сырный",
+      "price": "550",
+      "promotion": true,
+      "weight": "512г"
+    },
+    {
+      "count": 1,
+      "description": "Две сочных котлеты из цельной говядины под густым соусом пармезан на булочке бриошь. К ним добавили свежий салат Айсберг, спелые томаты, шампиньоны гриль. ",
+      "id": "b5eb",
+      "ingredients": [
+        "булочка бриошь",
+        "котлета из говядины",
+        "соус пармезан",
+        "листья салата айсберг",
+        "томат",
+        "шампиньоны гриль"
+      ],
+      "name": "Сытный",
+      "price": "639",
+      "promotion": false,
+      "weight": "580г"
+    },
+    {
+      "count": 1,
+      "description": "Приготовленный на огне бифштекс из нежнейшей говядины с хрустящим маринованным огурчиком, томатом, луком, горчичным соусом и кетчупом в подрумяненной булочке с кунжутом.",
+      "id": "cdac",
+      "ingredients": [
+        "булочка с кунжутом",
+        "бифштекс",
+        "лук",
+        "маринованные огурцы",
+        "томат",
+        "кетчуп",
+        "горчица"
+      ],
+      "name": "Вечная классика",
+      "price": "450",
+      "promotion": false,
+      "weight": "450г"
+    },
+    {
+      "count": 1,
+      "description": "Яркая булочка с томатами и паприкой,  сочная котлета из нежнейшей говядины с сыром чеддер, много овощей, пикантный соус сальса.",
+      "id": "c964",
+      "ingredients": [
+        "булочка с томатами и паприкой",
+        "котлета из говядины",
+        "лук",
+        "огурец",
+        "томат",
+        "соус сальса",
+        "листья салата айсберг"
+      ],
+      "name": "Итальянский",
+      "price": "560",
+      "promotion": false,
+      "weight": "510г"
+    }
+  ],
+  "cart": {
+    "-Obg7ZJLwplMf1dpnsOz": {
+      "colorie": "ккал 430",
+      "count": 4,
+      "description": "Супер мясное наслаждение! Большая рубленая котлета из свежего говяжьего мяса покорит вас своей сочностью, а хрустящие листья салата добавят свежести.",
+      "id": "1f7b",
+      "imgUrl": "products/burgers/burgers_0.png",
+      "ingredients": [
+        "пшеничная булочка",
+        "котлета из говядины",
+        "красный лук",
+        "листья салата",
+        "соус горчичный"
+      ],
+      "key": "-Obg7ZJKzgUhHDMB_ehd",
+      "name": "Мясная бомба",
+      "price": "689",
+      "promotion": false,
+      "weight": "520г"
+    },
+    "-Obg7q6dpd-JTDlgjrbN": {
+      "count": 1,
+      "description": "Большой бургер с двумя сочными мраморными бифштексами из натуральной говядины на карамелизированной булочке, заправленной горчицей, кетчупом, луком и косочком огурчика.",
+      "id": "6350",
+      "imgUrl": "products/burgers/burgers_1.png",
+      "ingredients": [
+        "пшеничная булочка",
+        "бифштекс",
+        "лук",
+        "огурец",
+        "томат",
+        "кетчуп",
+        "приправа для гриля",
+        "горчичный соус"
+      ],
+      "key": "-Obg7q6dpd-JTDlgjrbM",
+      "name": "Тяжелый удар",
+      "price": "480",
+      "promotion": true,
+      "weight": "470г"
+    }
+  },
+  "combo": [
+    {
+      "count": 1,
+      "description": "",
+      "id": "19a5",
+      "name": "Сырная тарелка",
+      "price": "595",
+      "promotion": false,
+      "weight": "430г"
+    },
+    {
+      "count": 1,
+      "description": "Ассорти из мясных деликатесов - пряной копченой говядины, нежного ростбифа, тонко нарезанного сала, куриного рулета и буженины - украсит своим разнообразием любой стол!",
+      "id": "b813",
+      "ingredients": [
+        "Куриный рулет",
+        "буженина",
+        "говядина копченая",
+        "ростбиф",
+        "сало"
+      ],
+      "name": "Мясная нарезка",
+      "price": "780",
+      "promotion": false,
+      "weight": "520г"
+    },
+    {
+      "count": 1,
+      "description": "Сочные овощи и свежая зелень, отобранные вручную и тщательно нарезанные для вашего удобства.",
+      "id": "cd83",
+      "ingredients": [
+        "Помидоры черри",
+        "перец сладкий",
+        "листья салата айсберг",
+        "редис",
+        "укроп",
+        "руккола"
+      ],
+      "name": "Овощной букет",
+      "price": "279",
+      "promotion": false,
+      "weight": "410г"
+    }
+  ],
+  "desserts": [
+    {
+      "count": 1,
+      "description": "Теплые рулитики из воздушного дрожжевого теста с начинкой из куриного филе с зеленью, имбирем и соусом кимчи.",
+      "id": "ab59",
+      "ingredients": [
+        "тесто дрожжевое",
+        "филе куриное",
+        "укроп",
+        "лук",
+        "соус кимчи",
+        "кинза",
+        "руккола",
+        "яйцо"
+      ],
+      "name": "Рулетики Азия",
+      "price": "790",
+      "promotion": false,
+      "weight": "645"
+    }
+  ],
+  "hotdogs": [
+    {
+      "count": 1,
+      "description": "Быстрый и очень вкусный перекус! Нежнейшая булочка, сочная колбаска и свежая зелень.",
+      "id": "7ea4",
+      "ingredients": [
+        "бейгл",
+        "кета слабосоленая",
+        "помидор",
+        "руккола",
+        "сырный крем с авокадо"
+      ],
+      "name": "Домашний хот-дог",
+      "price": "290",
+      "promotion": false,
+      "weight": "250г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "2173",
+      "name": "Жгучий хот-дог",
+      "price": "239",
+      "promotion": false,
+      "weight": "245г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "9e90",
+      "name": "Классический хот-дог",
+      "price": "220",
+      "promotion": true,
+      "weight": "215г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "6056",
+      "name": "Хот-дог с зеленью",
+      "price": "235",
+      "promotion": true,
+      "weight": "245г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "5234",
+      "name": "Французский хот-дог",
+      "price": "259",
+      "promotion": false,
+      "weight": "217г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "7d97",
+      "name": "Уличный хот-дог",
+      "price": "220",
+      "promotion": false,
+      "weight": "270"
+    }
+  ],
+  "order": {
+    "-OCjDbg2foWwoN9_B-PP": {
+      "address": "",
+      "delivery": "carrier",
+      "firstName": "vgbhghgfh",
+      "floor": "",
+      "intercom": "",
+      "key": "-OCjDbg2foWwoN9_B-PO",
+      "phone": "23213123123",
+      "point": "pointProsLen"
+    },
+    "-OCjDy1L1UolWW883kUX": {
+      "address": "",
+      "delivery": "carrier",
+      "firstName": "fvgfgfgf",
+      "floor": "",
+      "intercom": "",
+      "key": "-OCjDy1L1UolWW883kUW",
+      "phone": "124564654",
+      "point": "pointProsLen"
+    },
+    "-OCjE44q7iioYvXSyU_R": {
+      "address": "",
+      "delivery": "carrier",
+      "firstName": "fgfgfg",
+      "floor": "",
+      "intercom": "",
+      "key": "-OCjE44q7iioYvXSyU_Q",
+      "phone": "66699888",
+      "point": "pointProsLen"
+    },
+    "-OCjEUGq5nmLq83Cf2Uu": {
+      "address": "",
+      "delivery": "carrier",
+      "firstName": "ffgdfgdf",
+      "floor": "",
+      "intercom": "",
+      "key": "-OCjEUGq5nmLq83Cf2Ut",
+      "phone": "5656546",
+      "point": "pointMozhVal"
+    },
+    "-OCjEhEeN11-vQH5xzm6": {
+      "address": "",
+      "delivery": "carrier",
+      "firstName": "dfdfdf",
+      "floor": "",
+      "intercom": "",
+      "key": "-OCjEhEeN11-vQH5xzm5",
+      "phone": "5552222",
+      "point": "pointNovosl"
+    },
+    "-OCjFBXtug4HbMpVYWBT": {
+      "address": "",
+      "delivery": "carrier",
+      "firstName": "ghfhg",
+      "floor": "",
+      "intercom": "",
+      "key": "-OCjFBXtug4HbMpVYWBS",
+      "phone": "5899666",
+      "point": "pointBoulRozhd"
+    },
+    "-OCjFSKeKWMpPX-cK_LU": {
+      "address": "",
+      "delivery": "carrier",
+      "firstName": "ghfghfgh",
+      "floor": "",
+      "intercom": "",
+      "key": "-OCjFSKeKWMpPX-cK_LT",
+      "phone": "3666666",
+      "point": "pointProsLen"
+    },
+    "-OCjK40kEZyO4DIoGhg5": {
+      "address": "",
+      "delivery": "carrier",
+      "firstName": "gfdgdfg",
+      "floor": "",
+      "intercom": "",
+      "key": "-OCjK40kEZyO4DIoGhg4",
+      "phone": "555545455",
+      "point": "pointMozhVal"
+    },
+    "-OCnv7xNqmPBStBjucZm": {
+      "address": "fcbvcfg",
+      "delivery": "carrier",
+      "firstName": "bgfg",
+      "floor": "",
+      "intercom": "",
+      "key": "-OCnv7xNqmPBStBjucZl",
+      "phone": "546456546",
+      "point": "pointNovosl"
+    },
+    "-OCnwcExw8WgX65bB8dL": {
+      "address": "df",
+      "delivery": "carrier",
+      "firstName": "dfsdf",
+      "floor": "",
+      "intercom": "",
+      "key": "-OCnwcExw8WgX65bB8dK",
+      "phone": "546546456"
+    },
+    "-OQh0rwwE-ErpbQJR01k": {
+      "address": "gjg",
+      "delivery": "carrier",
+      "firstName": "hjg",
+      "floor": "",
+      "intercom": "",
+      "key": "-OQh0rwwE-ErpbQJR01j",
+      "phone": "564546546564546"
+    },
+    "-ObauRgBkSSxc6KvYeQb": {
+      "address": "fdgfg",
+      "delivery": "carrier",
+      "firstName": "frdfg",
+      "floor": "",
+      "intercom": "",
+      "key": "-ObauRgBkSSxc6KvYeQa",
+      "phone": "33564654564"
+    },
+    "-Obc5KNCGLoyslrvMS3h": {
+      "address": "fgfgfghfgh",
+      "delivery": "carrier",
+      "firstName": "gfhfghfgh",
+      "floor": "",
+      "intercom": "",
+      "key": "-Obc5KNB_0bzT94XD4OV"
+    },
+    "-ObcG9sLQAWIoiyJ2OQu": {
+      "address": "нгн",
+      "delivery": "carrier",
+      "firstName": "Татьяна",
+      "floor": "",
+      "intercom": "",
+      "key": "-ObcG9sKjuADDOgDk3iK",
+      "phone": "54545"
+    },
+    "-ObcJBf3vxlYj6z5lfwf": {
+      "address": "dfsdf",
+      "delivery": "carrier",
+      "firstName": "Татьяна",
+      "floor": "",
+      "intercom": "",
+      "key": "-ObcJBf3vxlYj6z5lfwe"
+    },
+    "-ObcOW1DFloDll-Vf_jx": {
+      "address": "dfsdf",
+      "delivery": "carrier",
+      "firstName": "Татьяна",
+      "floor": "",
+      "intercom": "",
+      "key": "-ObcOW1DFloDll-Vf_jw"
+    },
+    "-ObcOdFglYsG4qh7AKdL": {
+      "address": "dfd",
+      "delivery": "carrier",
+      "firstName": "df",
+      "floor": "",
+      "intercom": "",
+      "key": "-ObcOdFglYsG4qh7AKdK"
+    },
+    "-ObcP5euN2MIKWzqxBDp": {
+      "address": "dfsdf",
+      "delivery": "carrier",
+      "firstName": "Татьяна",
+      "floor": "",
+      "intercom": "",
+      "key": "-ObcP5euN2MIKWzqxBDo"
+    },
+    "-ObcPHEgmajcRO6OQOKw": {
+      "address": "dfsdf",
+      "delivery": "carrier",
+      "firstName": "Татьяна",
+      "floor": "",
+      "intercom": "",
+      "key": "-ObcPHEf1G5gTv76W1U7"
+    },
+    "-ObcPgi2XWwDjGz2hEhu": {
+      "key": "-ObcPgi2XWwDjGz2hEht"
+    },
+    "-ObcPhdK59oz2wZXddk-": {
+      "key": "-ObcPhdK59oz2wZXddjz"
+    },
+    "-ObcPhf_6btb1uo45jAQ": {
+      "key": "-ObcPhf_6btb1uo45jAP"
+    },
+    "-ObcPiQNGay8K15j2RK1": {
+      "key": "-ObcPiQNGay8K15j2RK0"
+    },
+    "-ObcPj5XQEboCmCPdsa8": {
+      "key": "-ObcPj5XQEboCmCPdsa7"
+    },
+    "-ObcQD8XHbGIx0oJA5as": {
+      "address": "dfsdf",
+      "delivery": "carrier",
+      "firstName": "Татьяна",
+      "floor": "",
+      "intercom": "",
+      "key": "-ObcQD8XHbGIx0oJA5ar"
+    },
+    "-ObcQmti8XqEBni3A3-i": {
+      "address": "dfsdf",
+      "delivery": "carrier",
+      "firstName": "Татьяна",
+      "floor": "",
+      "intercom": "",
+      "key": "-ObcQmti8XqEBni3A3-h"
+    },
+    "-ObcTCiOXhZ18DAAdajE": {
+      "address": "dfsdf",
+      "delivery": "carrier",
+      "firstName": "Татьяна",
+      "floor": "",
+      "intercom": "",
+      "key": "-ObcTCiOXhZ18DAAdajD"
+    },
+    "-ObcTJVrQi--c4o2p0Lo": {
+      "address": "dfsdf",
+      "delivery": "carrier",
+      "firstName": "Татьяна",
+      "floor": "",
+      "intercom": "",
+      "key": "-ObcTJVrQi--c4o2p0Ln"
+    },
+    "-Obd5KsKN95_M2lPLHf0": {
+      "address": "dfsdf",
+      "delivery": "carrier",
+      "firstName": "Татьяна",
+      "floor": "",
+      "intercom": "",
+      "key": "-Obd5KsKN95_M2lPLHf-"
+    },
+    "-Obd7XZ0e3-UhmexC3bb": {
+      "address": "dfsdf",
+      "delivery": "carrier",
+      "firstName": "Татьяна",
+      "floor": "",
+      "intercom": "",
+      "key": "-Obd7XZ0e3-UhmexC3ba"
+    },
+    "-ObdJ5dCCRNMpPWzGxQD": {
+      "address": "dfsdf",
+      "delivery": "carrier",
+      "firstName": "Татьяна",
+      "floor": "",
+      "intercom": "",
+      "key": "-ObdJ5dCCRNMpPWzGxQC"
+    },
+    "-ObfvqfBpq7SsoFA0c72": {
+      "address": "dfsdf",
+      "delivery": "carrier",
+      "firstName": "Татьяна",
+      "floor": "",
+      "intercom": "",
+      "key": "-ObfvqfA3esMrGuB-hD9"
+    }
+  },
+  "pizza": [
+    {
+      "count": 1,
+      "description": "",
+      "id": "305c",
+      "name": "С ветчиной и грибами",
+      "price": "1240",
+      "promotion": false,
+      "weight": "670г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "ea51",
+      "name": "Домашняя",
+      "price": "1260",
+      "promotion": false,
+      "weight": "550г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "3d43",
+      "name": "BBQ",
+      "price": "1125",
+      "promotion": true,
+      "weight": "630г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "e685",
+      "name": "Карбонара",
+      "price": "1355",
+      "promotion": false,
+      "weight": "740г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "5320",
+      "name": "Пепперони",
+      "price": "1050",
+      "promotion": false,
+      "weight": "590г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "c065",
+      "name": "Четыре сыра",
+      "price": "1390",
+      "promotion": false,
+      "weight": "890г"
+    }
+  ],
+  "products": "",
+  "reg": {
+    "-OCj-gQfX_j_GiAdo7cj": {
+      "checkbox": true,
+      "confirmPassword": "123456",
+      "date": "1987-03-12",
+      "firstName": "Tatyana",
+      "key": "-OCj-gQeQx3-FTmfSx5s",
+      "lastName": "Panchenko",
+      "mail": "t3131653@gmail.com",
+      "password": "123456"
+    }
+  },
+  "sauces": [
+    {
+      "count": 1,
+      "description": "",
+      "id": "ed52",
+      "name": "Соус с кетчупом",
+      "price": "180",
+      "promotion": false,
+      "weight": "120г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "5836",
+      "name": "Соус сырный",
+      "price": "235",
+      "weight": "130г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "cef5",
+      "name": "Соус с горчицей",
+      "price": "200",
+      "promotion": false,
+      "weight": "120г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "dd66",
+      "name": "Соус цезарь",
+      "price": "250",
+      "promotion": false,
+      "weight": "120г"
+    }
+  ],
+  "shawarma": [
+    {
+      "count": 1,
+      "description": "",
+      "id": "4d57",
+      "name": "С курицей и халапеньо",
+      "price": "250",
+      "promotion": false,
+      "weight": "330г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "4ea0",
+      "name": "С курицей в сырном лаваше",
+      "price": "310",
+      "promotion": true,
+      "weight": "350г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "f933",
+      "name": "Классическая",
+      "price": "300",
+      "promotion": false,
+      "weight": "370г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "3f8b",
+      "name": "Мега  куриная",
+      "price": "465",
+      "promotion": false,
+      "weight": "550г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "2fab",
+      "name": "Деревенская",
+      "price": "365",
+      "promotion": false,
+      "weight": "340г"
+    }
+  ],
+  "snacks": [
+    {
+      "count": 1,
+      "description": "Настоящее мексиканское удовольствие - хрустящие чипсы из тонкой кукурузной лепешки тортильи со вкусом сыра чеддер.",
+      "id": "7bf6",
+      "ingredients": [
+        "зерно кукурузы",
+        "масло подсолнечное",
+        "вкусовая добавка 'Сыр чеддер'",
+        "соль"
+      ],
+      "name": "Начос",
+      "price": "250",
+      "promotion": false,
+      "weight": "220г"
+    },
+    {
+      "count": 1,
+      "description": "Большая порция картофеля фри для двойного удовольствия. В два раза больше вкусных картофельных палочек, обжаренных во фритюре.",
+      "id": "2512",
+      "ingredients": [
+        "картофель фри",
+        "масло растительное",
+        "соль"
+      ],
+      "name": "Картошка фри",
+      "price": "245",
+      "promotion": true,
+      "weight": "180г"
+    },
+    {
+      "count": 1,
+      "description": "Вкуснейшие луковые кольца в хрустящей панировке, обжаренные во фритюре.",
+      "id": "8dc7",
+      "ingredients": [
+        "луковые кольца",
+        "панировка",
+        "масло растительное"
+      ],
+      "name": "Луковые кольца",
+      "price": "230",
+      "promotion": false,
+      "weight": "160г"
+    },
+    {
+      "count": 1,
+      "description": "Классическая итальянская закуска - ломтик ржаного багета, поджаренного на оливковом масле до легкой корочки и хрустящего состояния, сверху - лосось, сыр и руккола.",
+      "id": "3209",
+      "ingredients": [
+        "багет ржаной",
+        "лосось слабосоленый",
+        "руккола",
+        "сыр креметте",
+        "масло сливочное",
+        "орегано сушеный"
+      ],
+      "name": "Брускетта с лососем",
+      "price": "450",
+      "promotion": false,
+      "weight": "150г"
+    },
+    {
+      "count": 1,
+      "description": "Пшеничный багет с аджикой, куриным филе, сыром сулугуни и свежими помидорами - легкий перекус для ценителей восточной кухни.",
+      "id": "2321",
+      "ingredients": [
+        "багет пшеничный",
+        "аджика",
+        "куриное филе",
+        "помидоры",
+        "сыр сулугуни",
+        "яйцо",
+        "соль"
+      ],
+      "name": "Сэндвич по грузински",
+      "price": "653",
+      "promotion": false,
+      "weight": "560г"
+    },
+    {
+      "count": 1,
+      "description": "Нежный, вкусный и полезный бейгл с морепродуктами - что может быть лучше для быстрого перекуса?",
+      "id": "5df7",
+      "ingredients": [
+        "бейгл",
+        "кета слабосоленая",
+        "помидор",
+        "руккола",
+        "сырный крем с авокадо"
+      ],
+      "name": "Рыбный бейгл",
+      "price": "445",
+      "promotion": false,
+      "weight": "340г"
+    }
+  ],
+  "wok": [
+    {
+      "count": 1,
+      "description": "",
+      "id": "4b77",
+      "name": "Вок сытный",
+      "price": "689",
+      "promotion": false,
+      "weight": "520г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "40d9",
+      "name": "Вок по-корейски",
+      "price": "425",
+      "promotion": false,
+      "weight": "405г"
+    },
+    {
+      "count": 1,
+      "description": "",
+      "id": "d390",
+      "name": "Вок с индейкой",
+      "price": "420",
+      "promotion": true,
+      "weight": "380г"
+    }
+  ]
+}

@@ -17,6 +17,9 @@
     padding: 24px;
     background-color: rgba(255, 255, 255, 1);
     border-radius: 24px;
+    @media (max-width: 768px) {
+      margin: 15px;
+    }
     .modal-close {
       position: absolute;
       width: 24px;
@@ -34,11 +37,17 @@
       display: flex;
       gap: 16px;
       margin-bottom: 40px;
-      .modal-img {
-        max-width: 100%;
-      }
       font-size: 12px;
       width: 100%;
+      .modal-img {
+        max-width: 100%;
+        @media (max-width: 576px) {
+          margin: auto;
+        }
+      }
+      @media (max-width: 576px) {
+        flex-direction: column;
+      }
       .modal-about {
         font-size: 12px;
         min-height: 226px;

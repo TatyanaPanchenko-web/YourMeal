@@ -14,8 +14,8 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    max-width: 300px;
-
+    max-width: 350px;
+    margin: auto;
     .registration-inner {
       display: flex;
       flex-direction: column;
@@ -26,7 +26,7 @@
         border: 1px solid $btnColor;
         outline: none;
         padding: 12px;
-        font-size: 10px;
+        font-size: 12px;
       }
       input::placeholder {
         color: $shadowColor;
@@ -34,8 +34,7 @@
     }
     label {
       margin-right: 15px;
-      font-size: 10px;
-      width: 100%;
+      font-size: 12px;
       :global {
         .ant-checkbox-inner {
           border-color: $btnColor;
@@ -52,6 +51,7 @@
     .registration-date {
       display: flex;
       flex-direction: column;
+      width: 100%;
       color: rgba(0, 0, 0, 0.8);
       p {
         padding-left: 12px;
@@ -61,6 +61,7 @@
       }
     }
     input[type="submit"] {
+      font-family: "Nunito", sans-serif;
       margin-top: 15px;
       background-color: $secondaryaccentTextColor;
       color: $accentTextColor;
