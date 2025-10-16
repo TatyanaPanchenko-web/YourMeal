@@ -7,7 +7,7 @@ import {
   update,
   remove,
 } from "firebase/database";
-import firebaseConfig from "../firebaseConfig.json";
+import { firebaseConfig } from "../../firebase.js";
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
