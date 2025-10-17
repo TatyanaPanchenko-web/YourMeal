@@ -20,7 +20,7 @@ export default function MainPage({ dataAuth }) {
     setStatus,
     dataKeys: cartElements.dataKeys,
   };
-  console.log(upload);
+
   const [activeTab, setActiveTab] = useState({
     img: "./nav/burgers.png",
     name: "Бургеры",
@@ -28,7 +28,7 @@ export default function MainPage({ dataAuth }) {
   });
   useEffect(() => {
     const productsServer = getData(`products/${activeTab.product_name}`);
-      const cartServer = getData("cart");
+    const cartServer = getData("cart");
     Promise.allSettled([productsServer, cartServer]).then((results) => {
       if (results[0].status === "fulfilled") {
         setProducts({ data: results[0].value || [], status: true });

@@ -7,8 +7,8 @@ export default function SuccessRegistration({ regdata }) {
       {!regdata ? (
         <div className={style.loading}>Loading...</div>
       ) : (
-        <div>
-          <div className={style.title}>Регистрация прошла успешно</div>
+        <div className={style["registration-info"]}>
+         Регистрация прошла успешно
         </div>
       )}
     </>

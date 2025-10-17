@@ -25,8 +25,7 @@ export default function modalDelivery({
   });
 
   const onSubmit = (data) => {
-    console.log(data);
-    setSubmitForm(true);
+       setSubmitForm(true);
     updateOrderData(data);
     upload.setStatus((prev) => !prev);
     deleteAllCart();
@@ -74,7 +73,7 @@ export default function modalDelivery({
                     {errors.firstName?.message}
                   </p>
                 )}
-                {console.log(errors)}
+             
                 <input
                   placeholder="+375 (__) ___-__-__"
                   type="tel"

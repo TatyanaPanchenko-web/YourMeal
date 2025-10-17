@@ -21,7 +21,7 @@ $shadowColor: #b1b1b1;
   $hoverColorBg: $secondaryaccentTextColor,
   $hoverColorText: $accentTextColor
 ) {
-   font-family: "Nunito", sans-serif;
+  font-family: "Nunito", sans-serif;
   color: $color;
   background-color: $bgColor;
   display: inline-flex;
@@ -33,7 +33,7 @@ $shadowColor: #b1b1b1;
   border: none;
   font-size: 12px;
   cursor: pointer;
-  transition: background-color 0.3s linear;
+  transition: all 0.3s linear;
   &:hover {
     background-color: $hoverColorBg;
     color: $hoverColorText;

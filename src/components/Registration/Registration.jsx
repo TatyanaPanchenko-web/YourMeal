@@ -21,8 +21,15 @@ export default function Registration({ setRegdata }) {
 
   const auth = getAuth();
   const onSubmit = (data) => {
-    createUserWithEmailAndPassword(auth, data.mail, data.password)
-      .then(() => {
+    createUserWithEmailAndPassword(
+      auth,
+      data.mail,
+      data.password,
+      data.firstName
+    )
+      .then((userCredential) => {
+        const user = userCredential.user;
+     
         updateRegData(data);
         setRegdata({ data: data, status: true });
       })
@@ -55,20 +62,6 @@ export default function Registration({ setRegdata }) {
             <p className={style.errorField}>{errors.firstName?.message}</p>
           )}
 
-          <input
-            placeholder="Фамилия"
-            {...register("lastName", {
-              required: "Необходимо заполнить данное поле",
-              maxLength: 50,
-              pattern: {
-                value: /^[A-Za-z]+$/i,
-                message: "Поле содержит недопустимые символы",
-              },
-            })}
-          />
-          {errors.lastName && (
-            <p className={style.errorField}>{errors.lastName?.message}</p>
-          )}
           <input
             placeholder="E-mail"
             {...register("mail", {

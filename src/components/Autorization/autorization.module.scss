@@ -1,16 +1,17 @@
 @import "../../style/vars.scss";
-
-.autorization-wrapper {
-  background-color: $bgColor;
-  padding: 20px 16px;
-  .autorization-title {
+.autorization {
+  &-wrapper {
+    background-color: $bgColor;
+    padding: 20px 16px;
+  }
+  &-title {
     text-align: center;
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 18px;
     font-family: "Nunito", sans-serif;
   }
-  .autorization-form {
+  &-form {
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -44,7 +45,7 @@
     }
 
     input[type="submit"] {
-       font-family: "Nunito", sans-serif;
+      font-family: "Nunito", sans-serif;
       margin-top: 15px;
       background-color: $secondaryaccentTextColor;
       color: $accentTextColor;
@@ -60,6 +61,14 @@
     .errorField {
       font-size: 12px;
       color: $secondaryaccentTextColor;
+    }
+  }
+  &-google {
+    text-align: center;
+    margin: 20px 0;
+    img {
+      width: 24px;
+      height: 24px;
     }
   }
 }
