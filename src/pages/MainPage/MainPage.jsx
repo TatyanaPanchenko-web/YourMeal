@@ -14,8 +14,9 @@ export default function MainPage({ dataAuth }) {
     dataKeys: [],
     status: false,
   });
+
   const [status, setStatus] = useState(false);
-  const upload = {
+    const upload = {
     status,
     setStatus,
     dataKeys: cartElements.dataKeys,

@@ -7,7 +7,7 @@ import {
   update,
   remove,
 } from "firebase/database";
-import { firebaseConfig } from "../../firebase.js";
+import { firebaseConfig } from "../../firebaseConfig.js";
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
@@ -42,10 +42,10 @@ export function deleteItemCart(key) {
   return remove(dataRef);
 }
 
-export function updateRegData(item) {
-  const dataRef = ref(database, "/reg");
-  const refKey = push(dataRef).key;
-  return push(dataRef, { ...item, key: refKey });
+export function addRegData(item, uid) {
+  const dataRef = ref(database, "/users");
+  // return push(dataRef, { ...item, key: uid });
+  return push(dataRef, { ...item });
 }
 
 export function updateOrderData(item) {

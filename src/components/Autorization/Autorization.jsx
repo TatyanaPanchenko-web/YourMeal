@@ -8,7 +8,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
-import firebase from "firebase/compat/app";
+import iconGoogle from "../../assets/icons/google.png";
 
 export default function Autorization({ dataAuth }) {
   const [errBase, setErrBase] = useState(false);
@@ -100,7 +100,7 @@ export default function Autorization({ dataAuth }) {
           <input type="submit" value="Войти" />
         </form>
         <div onClick={loginGoogle} className={style["autorization-google"]}>
-          <img src="src/assets/icons/google.png" alt="google" />
+          <img src={iconGoogle} alt="google" title="Войти с помощью Google" />
         </div>
       </div>
     </div>

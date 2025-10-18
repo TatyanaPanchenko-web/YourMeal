@@ -2,7 +2,7 @@ import style from "./registration.module.scss";
 
 import { useForm, Controller } from "react-hook-form";
 import { Checkbox } from "antd";
-import { updateRegData } from "../../services/FB";
+import { addRegData } from "../../services/FB";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function Registration({ setRegdata }) {
@@ -25,13 +25,15 @@ export default function Registration({ setRegdata }) {
       auth,
       data.mail,
       data.password,
-      data.firstName
+      data.displayName
     )
       .then((userCredential) => {
         const user = userCredential.user;
-     
-        updateRegData(data);
+
+        addRegData(data, user.uid);
         setRegdata({ data: data, status: true });
+        console.log(data);
+        console.log(user.uid);
       })
       .catch((error) => {
         console.error(error);
@@ -58,8 +60,8 @@ export default function Registration({ setRegdata }) {
               },
             })}
           />
-          {errors.firstName && (
-            <p className={style.errorField}>{errors.firstName?.message}</p>
+          {errors.displayName && (
+            <p className={style.errorField}>{errors.displayName?.message}</p>
           )}
 
           <input

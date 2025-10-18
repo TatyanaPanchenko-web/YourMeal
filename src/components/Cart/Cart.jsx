@@ -2,10 +2,13 @@ import CartItem from "../CartItem/CartItem";
 import { useState } from "react";
 import { getItemsCount } from "../../common/cartHandler";
 import ModalDelivery from "../ModalDelivery/ModalDelivery";
+import ModalSuccess from "..//ModalSuccess/ModalSuccess";
 import style from "./cart.module.scss";
 
 export default function Cart({ cartElements, upload, activeTab, dataAuth }) {
   const [modalDeliveryStatus, setModalDeliveryStatus] = useState(false);
+  const [submittedSuccess, setSubmittedSuccess] = useState(false);
+
   const checkPromo = cartElements.filter((item) => item.promotion === true);
 
   if (cartElements.length === 0) {
@@ -20,6 +23,9 @@ export default function Cart({ cartElements, upload, activeTab, dataAuth }) {
           </div>
           <div className={style["cart-empty"]}>Тут пока пусто :(</div>
         </div>
+        {submittedSuccess && (
+          <ModalSuccess setSubmittedSuccess={setSubmittedSuccess} />
+        )}
       </div>
     );
   }
@@ -69,10 +75,11 @@ export default function Cart({ cartElements, upload, activeTab, dataAuth }) {
           ) : null}
         </div>
       </div>
-    
+
       {modalDeliveryStatus && (
         <ModalDelivery
           setModalDeliveryStatus={setModalDeliveryStatus}
+          setSubmittedSuccess={setSubmittedSuccess}
           dataAuth={dataAuth}
           upload={upload}
         />

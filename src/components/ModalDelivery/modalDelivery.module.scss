@@ -10,6 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
   &-container {
     position: relative;
     padding: 40px 60px;
@@ -33,11 +34,17 @@
     .modal-inner {
       font-size: 12px;
       margin: auto;
+      min-width: 400px;
+      max-width: 400px;
       .delivery-form {
         display: flex;
         flex-direction: column;
         gap: 8px;
-        min-width: 400px;
+
+        // min-width: 400px;
+        @media (max-width: 576px) {
+          // min-width: 250px;
+        }
         input {
           border-radius: 12px;
           border: 1px solid $btnColor;
@@ -94,6 +101,9 @@
             padding-top: 8px;
             display: flex;
             gap: 8px;
+            @media (max-width: 576px) {
+              flex-direction: column;
+            }
           }
         }
 
