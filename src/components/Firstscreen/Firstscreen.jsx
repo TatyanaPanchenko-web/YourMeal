@@ -4,9 +4,10 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import firstscreenImg from "../../assets/firstscreen/firstscreenImg.png";
 import iconUser from "../../assets/icons/user.svg";
 import style from "./firstscreen.module.scss";
+import { getData } from "../../services/FB";
 
 export default function Firstscreen() {
-  const [user, setUser] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
   const [isOpenInfo, setIsOpenInfo] = useState(false);
 
   const auth = getAuth();
@@ -16,9 +17,10 @@ export default function Firstscreen() {
   useEffect(() => {
     const listenUser = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser(user);
+        const getUserFromBD = getData(`users/${user.uid}`);
+        getUserFromBD.then((result) => setUserInfo(result));
       } else {
-        setUser(null);
+        setUserInfo(null);
         navigate("/authorization");
       }
     });
@@ -48,7 +50,7 @@ export default function Firstscreen() {
       <div className={style["firstscreen-bg"]}></div>
       <div className={style["firstscreen-container"]}>
         <div ref={ref} className={style["firstscreen-login"]}>
-          {user && (
+          {userInfo && (
             <>
               <img
                 onClick={() => setIsOpenInfo((prev) => !prev)}
@@ -58,7 +60,17 @@ export default function Firstscreen() {
               />
               {isOpenInfo && (
                 <div className={style["firstscreen-login-inner"]}>
-                  {user.email}
+                  <div className={style["firstscreen-login-info"]}>
+                    {" "}
+                    <div>
+                      <b>Имя: </b>
+                      {userInfo.name}
+                    </div>
+                    <div>
+                      <b>Email:</b> {userInfo.email}
+                    </div>
+                  </div>
+
                   <div
                     onClick={userSignOut}
                     className={style["firstscreen-login-btn"]}

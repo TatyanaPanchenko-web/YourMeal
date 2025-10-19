@@ -21,19 +21,12 @@ export default function Registration({ setRegdata }) {
 
   const auth = getAuth();
   const onSubmit = (data) => {
-    createUserWithEmailAndPassword(
-      auth,
-      data.mail,
-      data.password,
-      data.displayName
-    )
+    createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
         const user = userCredential.user;
 
         addRegData(data, user.uid);
         setRegdata({ data: data, status: true });
-        console.log(data);
-        console.log(user.uid);
       })
       .catch((error) => {
         console.error(error);
@@ -51,7 +44,7 @@ export default function Registration({ setRegdata }) {
         <div className={style["registration-inner"]}>
           <input
             placeholder="Имя"
-            {...register("firstName", {
+            {...register("name", {
               required: "Необходимо заполнить данное поле",
               maxLength: 30,
               pattern: {
@@ -60,13 +53,13 @@ export default function Registration({ setRegdata }) {
               },
             })}
           />
-          {errors.displayName && (
-            <p className={style.errorField}>{errors.displayName?.message}</p>
+          {errors.name && (
+            <p className={style.errorField}>{errors.name?.message}</p>
           )}
 
           <input
             placeholder="E-mail"
-            {...register("mail", {
+            {...register("email", {
               required: "Необходимо заполнить данное поле",
               pattern: {
                 value: /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/,
@@ -74,9 +67,10 @@ export default function Registration({ setRegdata }) {
               },
             })}
           />
-          {errors.mail && (
-            <p className={style.errorField}>{errors.mail?.message}</p>
+          {errors.email && (
+            <p className={style.errorField}>{errors.email?.message}</p>
           )}
+
           <label className={style["registration-date"]}>
             <p> Дата рождения</p>
 

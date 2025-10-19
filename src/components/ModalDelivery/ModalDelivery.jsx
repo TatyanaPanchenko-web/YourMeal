@@ -1,5 +1,5 @@
-import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { useMask } from "@react-input/mask";
 import { updateOrderData } from "../../services/FB";
 import { deleteAllCart } from "../../services/FB";
@@ -19,6 +19,10 @@ export default function modalDelivery({
     formState: { errors },
   } = useForm();
 
+  const { ref, ...rest } = register("phone", {
+    required: "Необходимо заполнить данное поле",
+  });
+
   const inputPhoneRef = useMask({
     mask: "+___ (__) ___-__-__",
     replacement: { _: /\d/ },
@@ -31,6 +35,7 @@ export default function modalDelivery({
     setModalDeliveryStatus(false);
     setSubmittedSuccess(true);
   };
+
   return (
     <div>
       <div
@@ -76,11 +81,11 @@ export default function modalDelivery({
               <input
                 placeholder="+375 (__) ___-__-__"
                 type="tel"
-                // {...register("phone", {
-                //   required: "Необходимо заполнить данное поле",
-                // minLength: 3,
-                // })}
-                ref={inputPhoneRef}
+                {...rest}
+                ref={(e) => {
+                  ref(e);
+                  inputPhoneRef.current = e;
+                }}
               />
               {errors.phone && (
                 <p className={style.errorField}>{errors.phone?.message}</p>
@@ -96,7 +101,8 @@ export default function modalDelivery({
                       {...register("delivery", { required: true })}
                       type="radio"
                       value="carrier"
-                      checked
+                      name="methodDelivery"
+                      defaultChecked={true}
                     />
                     <span>Доставка</span>
                   </label>
@@ -111,12 +117,14 @@ export default function modalDelivery({
                       {...register("delivery", { required: true })}
                       type="radio"
                       value="self"
+                      name="methodDelivery"
                     />
-                    Самовывоз
+                    <span>Самовывоз</span>
                   </label>
                 </div>
               </div>
-              {choiceDelivery === "carrier" ? (
+
+              {choiceDelivery === "carrier" && (
                 <div className={style["modal-choice-delivery"]}>
                   <input
                     placeholder="Улица, дом, квартира"
@@ -150,7 +158,8 @@ export default function modalDelivery({
                     />
                   </div>
                 </div>
-              ) : (
+              )}
+              {choiceDelivery === "self" && (
                 <div className={style["modal-choice-self-delivery"]}>
                   <div className={style["modal-points]"]}>
                     <div className={style["modal-radio-item"]}>
@@ -197,6 +206,7 @@ export default function modalDelivery({
                   <div className={style["modal-map]"]}></div>
                 </div>
               )}
+
               <input type="submit" value="Оформить" />
             </form>
           </div>

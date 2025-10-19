@@ -17,6 +17,9 @@
     background-color: rgba(255, 255, 255, 1);
     border-radius: 24px;
     background-color: $bgColor;
+    @media (max-width: 576px) {
+      margin: 15px;
+    }
     .modal-close {
       position: absolute;
       width: 24px;
@@ -34,23 +37,20 @@
     .modal-inner {
       font-size: 12px;
       margin: auto;
-      min-width: 400px;
-      max-width: 400px;
-      .delivery-form {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
 
-        // min-width: 400px;
-        @media (max-width: 576px) {
-          // min-width: 250px;
-        }
+      .delivery-form {
+        display: grid;
+        grid-template-columns: minmax(100px, 400px);
+        gap: 8px;
         input {
           border-radius: 12px;
           border: 1px solid $btnColor;
           outline: none;
           padding: 12px;
           font-size: 12px;
+          @media (max-width: 300px) {
+            font-size: 10px;
+          }
         }
         input::placeholder {
           color: $shadowColor;
@@ -68,7 +68,6 @@
         label {
           display: flex;
           align-items: center;
-
           input[type="radio"] {
             position: relative;
             width: 14px;
@@ -98,7 +97,7 @@
         }
         .modal-choice-delivery {
           .modal-inputs {
-            padding-top: 8px;
+            padding: 8px 0;
             display: flex;
             gap: 8px;
             @media (max-width: 576px) {
