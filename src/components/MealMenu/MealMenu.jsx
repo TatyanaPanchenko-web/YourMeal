@@ -1,11 +1,12 @@
-import style from "./mealMenu.module.scss";
 import ProductItem from "../ProductItem/ProductItem";
+import style from "./mealMenu.module.scss";
 
 export default function MealMenu({
   products,
   upload,
   cartElements,
   activeTab,
+  userUid,
 }) {
   return (
     <div className={style["meal-menu"]}>
@@ -20,6 +21,7 @@ export default function MealMenu({
               upload={upload}
               cartElements={cartElements}
               activeTab={activeTab}
+              userUid={userUid}
             />
           );
         })}

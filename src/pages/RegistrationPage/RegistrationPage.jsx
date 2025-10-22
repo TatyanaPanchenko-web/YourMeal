@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import  { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Registration from "../../components/Registration/Registration";
 import SuccessRegistration from "../../components/SuccessRegistration/SuccessRegistration";

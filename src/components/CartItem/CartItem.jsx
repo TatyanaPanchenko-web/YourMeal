@@ -1,8 +1,7 @@
-import React from "react";
-import style from "./cartItem.module.scss";
 import { changeCountCartItem } from "../../common/cartHandler";
+import style from "./cartItem.module.scss";
 
-export default function CartItem({ upload, item, indexElement }) {
+export default function CartItem({ upload, item, indexElement, userUid }) {
   const { name, weight, price, count, imgUrl } = item;
   return (
     <div className={style["cart-item"]}>
@@ -18,13 +17,18 @@ export default function CartItem({ upload, item, indexElement }) {
       </div>
       <div className={style["item-counter"]}>
         <button
-          onClick={() => changeCountCartItem(false, item, upload, indexElement)}
+          onClick={() =>
+            changeCountCartItem(false, userUid, item, upload, indexElement)
+          }
         >
           -
         </button>
         <div>{count}</div>
         <button
-          onClick={() => changeCountCartItem(true, item, upload, indexElement)}
+          onClick={() => {
+            console.log(item);
+            changeCountCartItem(true, userUid, item, upload, indexElement);
+          }}
         >
           +
         </button>

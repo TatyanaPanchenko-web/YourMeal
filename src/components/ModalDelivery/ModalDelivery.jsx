@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { getAuth } from "firebase/auth";
 import { useMask } from "@react-input/mask";
-import { updateOrderData } from "../../services/FB";
+import { getData, addOrderData } from "../../services/FB";
 import { deleteAllCart } from "../../services/FB";
 import style from "./modalDelivery.module.scss";
 
@@ -12,6 +13,20 @@ export default function modalDelivery({
   upload,
 }) {
   const [choiceDelivery, setChoiceDelivery] = useState("carrier");
+  const [currentUser, setCurrentUser] = useState(null);
+  const [cartItems, setCartItems] = useState(null);
+  const userUIdFB = getAuth().currentUser.uid;
+
+  useEffect(() => {
+    if (userUIdFB) {
+      getData(`users/${userUIdFB}`).then((result) => {
+        setCurrentUser(result);
+      });
+      getData("cart").then((result) => {
+        setCartItems(result);
+      });
+    }
+  }, []);
 
   const {
     register,
@@ -19,8 +34,14 @@ export default function modalDelivery({
     formState: { errors },
   } = useForm();
 
+  console.log(userUIdFB);
+
   const { ref, ...rest } = register("phone", {
     required: "Необходимо заполнить данное поле",
+    minLength: {
+      value: 19,
+      message: "Некорректный номер телефона",
+    },
   });
 
   const inputPhoneRef = useMask({
@@ -28,10 +49,11 @@ export default function modalDelivery({
     replacement: { _: /\d/ },
   });
 
-  const onSubmit = (data) => {
-    updateOrderData(data);
+  const onSubmit = (data, userUIdFB) => {
+    // updateOrderData(data);
+    addOrderData(data, cartItems, userUIdFB);
     upload.setStatus((prev) => !prev);
-    deleteAllCart();
+    deleteAllCart(userUIdFB);
     setModalDeliveryStatus(false);
     setSubmittedSuccess(true);
   };
@@ -66,7 +88,11 @@ export default function modalDelivery({
                 placeholder="Ваше имя"
                 {...register("firstName", {
                   required: "Необходимо заполнить данное поле",
-                  value: `${dataAuth.firstName ? dataAuth.firstName : ""}`,
+                  value: `${currentUser?.name ? currentUser?.name : ""}`,
+                  minLength: {
+                    value: 2,
+                    message: "Некорректное значение",
+                  },
                   maxLength: 30,
                   pattern: {
                     value: /^[A-Za-z, А-Яа-я]+$/i,
@@ -132,6 +158,10 @@ export default function modalDelivery({
                     {...register("address", {
                       required: "Необходимо заполнить данное поле",
                       maxLength: 60,
+                      minLength: {
+                        value: 5,
+                        message: "Некорректное значение",
+                      },
                     })}
                   />
                   {errors.address && (
@@ -165,7 +195,9 @@ export default function modalDelivery({
                     <div className={style["modal-radio-item"]}>
                       <label>
                         <input
-                          {...register("point", { required: true })}
+                          {...register("point", {
+                            required: "Необходимо выбрать хотя бы один вариант",
+                          })}
                           type="radio"
                           value="pointBoulRozhd"
                         />
@@ -175,7 +207,9 @@ export default function modalDelivery({
                     <div className={style["modal-radio-item"]}>
                       <label>
                         <input
-                          {...register("point", { required: true })}
+                          {...register("point", {
+                            required: "Необходимо выбрать хотя бы один вариант",
+                          })}
                           type="radio"
                           value="pointProsLen"
                         />
@@ -185,7 +219,9 @@ export default function modalDelivery({
                     <div className={style["modal-radio-item"]}>
                       <label>
                         <input
-                          {...register("point", { required: true })}
+                          {...register("point", {
+                            required: "Необходимо выбрать хотя бы один вариант",
+                          })}
                           type="radio"
                           value="pointNovosl"
                         />
@@ -195,7 +231,9 @@ export default function modalDelivery({
                     <div className={style["modal-radio-item"]}>
                       <label>
                         <input
-                          {...register("point", { required: true })}
+                          {...register("point", {
+                            required: "Необходимо выбрать хотя бы один вариант",
+                          })}
                           type="radio"
                           value="pointMozhVal"
                         />
@@ -203,10 +241,12 @@ export default function modalDelivery({
                       </label>
                     </div>
                   </div>
-                  <div className={style["modal-map]"]}></div>
+                  {/* <div className={style["modal-map]"]}></div> */}
+                  {errors.point && (
+                    <p className={style.errorField}>{errors.point?.message}</p>
+                  )}
                 </div>
               )}
-
               <input type="submit" value="Оформить" />
             </form>
           </div>

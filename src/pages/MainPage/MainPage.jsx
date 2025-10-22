@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import MealMenu from "../../components/MealMenu/MealMenu";
 import Cart from "../../components/Cart/Cart";
 import Firstscreen from "../../components/Firstscreen/Firstscreen";
 import Nav from "../../components/Nav/Nav";
-import style from "./mainPage.module.scss";
 import { getData } from "../../services/FB.js";
 import nav from "../../data/nav.json";
+import style from "./mainPage.module.scss";
 
 export default function MainPage({ dataAuth }) {
   const [products, setProducts] = useState({ data: [], status: false });
@@ -14,9 +15,10 @@ export default function MainPage({ dataAuth }) {
     dataKeys: [],
     status: false,
   });
-
+  const [userUid, setUserUid] = useState(null);
+  console.log(userUid, cartElements);
   const [status, setStatus] = useState(false);
-    const upload = {
+  const upload = {
     status,
     setStatus,
     dataKeys: cartElements.dataKeys,
@@ -27,9 +29,22 @@ export default function MainPage({ dataAuth }) {
     name: "Бургеры",
     product_name: "burgers",
   });
+
+  const auth = getAuth();
+  useEffect(() => {
+    const listenUser = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserUid(user.uid);
+      }
+    });
+    return () => {
+      listenUser();
+    };
+  }, []);
+
   useEffect(() => {
     const productsServer = getData(`products/${activeTab.product_name}`);
-    const cartServer = getData("cart");
+    const cartServer = getData("cart/" + userUid);
     Promise.allSettled([productsServer, cartServer]).then((results) => {
       if (results[0].status === "fulfilled") {
         setProducts({ data: results[0].value || [], status: true });
@@ -42,8 +57,8 @@ export default function MainPage({ dataAuth }) {
         });
       }
     });
-  }, [status, activeTab]);
-
+  }, [status, activeTab, userUid]);
+  console.log(cartElements);
   return (
     <>
       <Firstscreen />
@@ -59,12 +74,14 @@ export default function MainPage({ dataAuth }) {
                 upload={upload}
                 activeTab={activeTab.product_name}
                 dataAuth={dataAuth}
+                userUid={userUid}
               />
               <MealMenu
                 products={products.data}
                 cartElements={cartElements.data}
                 upload={upload}
                 activeTab={activeTab}
+                userUid={userUid}
               />
             </div>
           </div>

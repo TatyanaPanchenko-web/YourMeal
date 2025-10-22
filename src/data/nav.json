@@ -30,11 +30,6 @@
     "product_name": "pizza"
   },
   {
-    "img": "./nav/wok.png",
-    "name": "Вок",
-    "product_name": "wok"
-  },
-  {
     "img": "./nav/desserts.png",
     "name": "Десерты",
     "product_name": "desserts"

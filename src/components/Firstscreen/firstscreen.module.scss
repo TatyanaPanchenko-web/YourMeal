@@ -44,17 +44,28 @@
         text-align: left;
         white-space: nowrap;
       }
-      &-btn {
-        margin-top: 15px;
-        color: red;
+      .firstscreen-signout-btn {
         @include btnStyle(
           $accentTextColor,
           $secondaryaccentTextColor,
           $secondaryaccentHoverColor
         );
+        margin-top: 15px;
       }
     }
-
+    .firstscreen-signin-btn {
+      @include btnStyle(
+        $accentTextColor,
+        $secondaryaccentTextColor,
+        $secondaryaccentHoverColor
+      );
+      padding: 10px 20px;
+      a {
+        color: $accentTextColor;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
     .firstscreen-wrapper {
       display: flex;
       justify-content: center;

@@ -2,17 +2,14 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
-
 import {
   RegistrationPage,
   AuthorizationPage,
   MainPage,
   ErrorPage,
 } from "../pages";
-
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-
 import style from "./app.module.scss";
 
 function App() {
@@ -21,11 +18,11 @@ function App() {
   const [regdata, setRegdata] = useState({ data: [], status: false });
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!auth) {
-      navigate("/authorization");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!auth) {
+  //     navigate("/authorization");
+  //   }
+  // }, []);
   return (
     <div className={style.app}>
       {showHeader && <Header />}

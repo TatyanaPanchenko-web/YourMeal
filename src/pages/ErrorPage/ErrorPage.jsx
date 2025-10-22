@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import style from "./errorPage.module.scss";
 
 export default function ErrorPage({ setShowHeader }) {
@@ -6,5 +6,16 @@ export default function ErrorPage({ setShowHeader }) {
     setShowHeader(false);
     return () => setShowHeader(true);
   }, []);
-  return <div className={style.error}>Такой страницы нет</div>;
+  return (
+    <div className={style.error}>
+      <div className={style["error-title"]}> Такой страницы нет</div>
+
+      <div className={style["error-img"]}>
+        <img
+          src="/src/assets/firstscreen/firstscreenImg.png"
+          alt="firstscreen-burger"
+        ></img>
+      </div>
+    </div>
+  );
 }

@@ -1,7 +1,8 @@
-import style from "./modalProduct.module.scss";
-import React from "react";
+import { useState, useEffect } from "react";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { changeCountCartItem } from "../../common/cartHandler";
 import { addItemCart } from "../../common/cartHandler";
+import style from "./modalProduct.module.scss";
 
 export default function ModalProduct({
   item,
@@ -9,8 +10,10 @@ export default function ModalProduct({
   upload,
   cartElements,
   setModalProductStatus,
+  userUid,
 }) {
   const { name, weight, price, description, colorie, ingredients } = item;
+
   return (
     <div>
       <div
@@ -53,7 +56,9 @@ export default function ModalProduct({
           <div className={style["modal-bottom"]}>
             <button
               className={style["modal-btn"]}
-              onClick={() => addItemCart(item, cartElements, upload, imgUrl)}
+              onClick={() =>
+                addItemCart(item, userUid, cartElements, upload, imgUrl)
+              }
             >
               Добавить
             </button>
@@ -63,7 +68,7 @@ export default function ModalProduct({
                   onClick={() => {
                     cartElements.map((el, index) => {
                       if (el.id === item.id) {
-                        changeCountCartItem(false, el, upload, index);
+                        changeCountCartItem(false, userUid, el, upload, index);
                       }
                     });
                   }}
@@ -82,15 +87,23 @@ export default function ModalProduct({
                     })}
                   </div>
                 )}
-                {/* {cartElements.find((el) => el.id === item.id)} */}
+
                 <button
                   onClick={() => {
-                    if (cartElements.length === 0 || item.count - 1 === 0) {
-                      addItemCart(item, cartElements, upload, imgUrl);
+                    if (cartElements.length === 0) {
+                      addItemCart(item, userUid, cartElements, upload, imgUrl);
+                      return;
+                    }
+                    const checkedItem = cartElements.find((el, index) => {
+                      return el.id === item.id;
+                    });
+                    if (!checkedItem) {
+                      addItemCart(item, userUid, cartElements, upload, imgUrl);
+                      return;
                     }
                     cartElements.map((el, index) => {
                       if (el.id === item.id) {
-                        changeCountCartItem(true, el, upload, index);
+                        changeCountCartItem(true, userUid, el, upload, index);
                       }
                     });
                   }}

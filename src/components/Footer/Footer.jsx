@@ -1,8 +1,8 @@
-import style from "./footer.module.scss";
+import { Link } from "react-router-dom";
 import footerLogo from "../../assets/footer/footer-logo.svg";
 import telegram from "../../assets/footer/telegram.png";
 import vk from "../../assets/footer/vk.png";
-import Registration from "../Registration/Registration";
+import style from "./footer.module.scss";
 
 export default function Footer() {
   return (
@@ -10,7 +10,9 @@ export default function Footer() {
       <div className={style["footer-container"]}>
         <div className={style["footer-wrapper"]}>
           <div className={style["footer-logo"]}>
-            <img src={footerLogo} alt="footerLogo" />
+            <Link to="/" className="link">
+              <img src={footerLogo} alt="footerLogo" />
+            </Link>
           </div>
           <div className={style["footer-inner"]}>
             <div className={style["footer-phone"]}>

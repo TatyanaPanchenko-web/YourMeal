@@ -75,7 +75,11 @@
       gap: 16px;
       .modal-btn {
         max-width: 276px;
-        @include btnStyle($accentTextColor, $secondaryaccentTextColor,  $secondaryaccentHoverColor);
+        @include btnStyle(
+          $accentTextColor,
+          $secondaryaccentTextColor,
+          $secondaryaccentHoverColor
+        );
       }
       .modal-total {
         width: 100%;

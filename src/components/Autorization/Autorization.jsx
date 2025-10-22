@@ -1,4 +1,3 @@
-import style from "./autorization.module.scss";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +8,7 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import iconGoogle from "../../assets/icons/google.png";
+import style from "./autorization.module.scss";
 
 export default function Autorization({ dataAuth }) {
   const [errBase, setErrBase] = useState(false);

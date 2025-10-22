@@ -1,8 +1,9 @@
-import style from "./nav.module.scss";
 import NavItem from "../NavItem/NavItem";
+import style from "./nav.module.scss";
 
 export default function Nav(props) {
   const { activeTab, setActiveTab, nav } = props;
+
   return (
     <nav className={style.nav}>
       <div className={style["nav-container"]}>

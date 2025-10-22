@@ -1,5 +1,4 @@
 import style from "./navItem.module.scss";
-import React from "react";
 
 export default function NavItem(props) {
   const { item, activeTab, setActiveTab } = props;

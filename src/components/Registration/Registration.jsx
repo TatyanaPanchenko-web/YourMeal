@@ -1,11 +1,13 @@
+import { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
+import validator from "validator";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import CustomizedCheckbox from "./CustomizedCheckbox";
+import { addRegData } from "../../services/FB";
 import style from "./registration.module.scss";
 
-import { useForm, Controller } from "react-hook-form";
-import { Checkbox } from "antd";
-import { addRegData } from "../../services/FB";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
 export default function Registration({ setRegdata }) {
+  const [errorDate, setErrorDate] = useState("");
   const {
     register,
     handleSubmit,
@@ -15,16 +17,16 @@ export default function Registration({ setRegdata }) {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      checkbox: false,
+      promo: false,
     },
   });
 
   const auth = getAuth();
   const onSubmit = (data) => {
+    console.log(data);
     createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
         const user = userCredential.user;
-
         addRegData(data, user.uid);
         setRegdata({ data: data, status: true });
       })
@@ -32,6 +34,25 @@ export default function Registration({ setRegdata }) {
         console.error(error);
       });
     reset();
+  };
+
+  const validateDate = (value) => {
+    // Check if the input has at least 10 characters (e.g., "YYYY-MM-DD")
+    if (value.length === 10) {
+      // Validate date using validator's isDate function
+      if (
+        validator.isDate(value, {
+          format: "DD-MM-YYYY",
+          strictMode: true,
+        })
+      ) {
+        setErrorDate("Valid Date :)");
+      } else {
+        setErrorDate("Enter Valid Date! Use format YYYY-MM-DD.");
+      }
+    } else {
+      setErrorDate("Enter Valid Date! Use format YYYY-MM-DD.");
+    }
   };
 
   return (
@@ -47,8 +68,12 @@ export default function Registration({ setRegdata }) {
             {...register("name", {
               required: "Необходимо заполнить данное поле",
               maxLength: 30,
+              minLength: {
+                value: 2,
+                message: "Некорректное значение",
+              },
               pattern: {
-                value: /^[A-Za-z]+$/i,
+                value: /^[A-Za-z, А-Яа-я]+$/i,
                 message: "Поле содержит недопустимые символы",
               },
             })}
@@ -61,6 +86,7 @@ export default function Registration({ setRegdata }) {
             placeholder="E-mail"
             {...register("email", {
               required: "Необходимо заполнить данное поле",
+              maxLength: 40,
               pattern: {
                 value: /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/,
                 message: "Поле содержит недопустимые символы",
@@ -72,11 +98,16 @@ export default function Registration({ setRegdata }) {
           )}
 
           <label className={style["registration-date"]}>
-            <p> Дата рождения</p>
+            <span> Дата рождения</span>
 
             <input
+              onChange={(e) => {
+                validateDate(e.target.value);
+              }}
               placeholder="Дата рождения"
               type="date"
+              min="1900-01-01"
+              max="2025-01-01"
               {...register("date", {
                 required: "Необходимо заполнить данное поле",
               })}
@@ -84,6 +115,7 @@ export default function Registration({ setRegdata }) {
             {errors.date && (
               <p className={style.errorField}>{errors.date?.message}</p>
             )}
+            {errorDate && <p className={style.errorField}>{errorDate}</p>}
           </label>
 
           <input
@@ -121,26 +153,36 @@ export default function Registration({ setRegdata }) {
             </p>
           )}
         </div>
+
         <label>
           <Controller
-            name="checkbox"
+            name="agreement"
             control={control}
             rules={{ required: true }}
-            render={({ field }) => <Checkbox {...field} />}
+            render={({ field }) => (
+              <CustomizedCheckbox
+                {...field}
+                label={"Согласие на обработку персональных данных"}
+              />
+            )}
           />
-          Согласие на обработку персональных данных
-          {errors.checkbox && (
+          {errors.agreement && (
             <p className={style.errorField}>Необходимо отметить данное поле</p>
           )}
         </label>
+
         <label>
           <Controller
-            name="checkbox"
+            name="promo"
             control={control}
             rules={{ required: false }}
-            render={({ field }) => <Checkbox {...field} />}
+            render={({ field }) => (
+              <CustomizedCheckbox
+                {...field}
+                label={"Согласие на получение акционных предложений"}
+              />
+            )}
           />
-          Согласие на получение акционных предложений
         </label>
 
         <input type="submit" />

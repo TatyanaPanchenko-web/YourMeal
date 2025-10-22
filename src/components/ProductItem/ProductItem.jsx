@@ -1,14 +1,15 @@
-import React from "react";
 import { useState } from "react";
-import style from "./productItem.module.scss";
 import { addItemCart } from "../../common/cartHandler";
 import ModalProduct from "../../components/ModalProduct/ModalProduct";
+import style from "./productItem.module.scss";
+
 export default function ProductItem({
   item,
   index,
   upload,
   cartElements,
   activeTab,
+  userUid,
 }) {
   const [modalProductStatus, setModalProductStatus] = useState(false);
   const imgUrl = `products/${activeTab.product_name}/${activeTab.product_name}_${index}.png`;
@@ -35,7 +36,9 @@ export default function ProductItem({
           <div className={style["meal-menu-weight"]}>{weight}</div>
         </div>
         <button
-          onClick={() => addItemCart(item, cartElements, upload, imgUrl)}
+          onClick={() =>
+            addItemCart(item, userUid, cartElements, upload, imgUrl)
+          }
           className={style["meal-menu-btn"]}
         >
           Добавить
@@ -48,6 +51,7 @@ export default function ProductItem({
             cartElements={cartElements}
             modalProductStatus={modalProductStatus}
             setModalProductStatus={setModalProductStatus}
+            userUid={userUid}
           />
         ) : null}
       </div>

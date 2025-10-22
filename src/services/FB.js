@@ -28,19 +28,19 @@ export function getData(path) {
   });
 }
 
-export function updateCart(item) {
-  const dataRef = ref(database, "/cart");
+export function updateCart(item, uid) {
+  const dataRef = ref(database, "/cart/" + uid);
   const refKey = push(dataRef).key;
   return push(dataRef, { ...item, key: refKey });
 }
 
-export function changeItemCart(item, key) {
-  const dataRef = ref(database, "/cart/" + key);
+export function changeItemCart(item, uid, key) {
+  const dataRef = ref(database, "/cart/" + uid + "/" + key);
   return update(dataRef, item);
 }
 
-export function deleteItemCart(key) {
-  const dataRef = ref(database, "/cart/" + key);
+export function deleteItemCart(uid, key) {
+  const dataRef = ref(database, "/cart/" + uid + "/" + key);
   return remove(dataRef);
 }
 
@@ -61,10 +61,18 @@ export function addRegData(data, uid) {
     name: data.name,
     email: data.email,
     data: data.date,
-    checkbox: data.checkbox,
+    promo: data.promo,
+    agreement: data.agreement,
     uid: uid,
   };
   return update(ref(database, "users/" + uid), user);
+}
+export function addOrderData(address, cartItems, uid) {
+  const order = {
+    address: address,
+    cartItems: cartItems,
+  };
+  return update(ref(database, "users/" + uid + "/order"), order);
 }
 
 export function updateOrderData(item) {
@@ -72,7 +80,7 @@ export function updateOrderData(item) {
   const refKey = push(dataRef).key;
   return push(dataRef, { ...item, key: refKey });
 }
-export function deleteAllCart() {
-  const dataRef = ref(database, "/cart");
+export function deleteAllCart(uid) {
+  const dataRef = ref(database, "/cart/" + uid);
   return remove(dataRef);
 }

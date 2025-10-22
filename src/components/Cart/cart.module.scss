@@ -35,6 +35,22 @@
       }
     }
     .cart-bottom {
+      .cart-delete {
+        display: flex;
+        gap: 5px;
+        cursor: pointer;
+        font-size: 11px;
+        margin-bottom: 15px;
+        &:before {
+          content: "";
+          background-image: url("../../assets/icons/delete.png");
+          width: 16px;
+          height: 16px;
+          display: inline-block;
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+      }
       .cart-total {
         padding-top: 15px;
         margin-bottom: 20px;

@@ -32,20 +32,13 @@
         color: $shadowColor;
       }
     }
+
     label {
-      margin-right: 15px;
-      font-size: 12px;
-      :global {
-        .ant-checkbox-inner {
-          border-color: $btnColor;
-        }
-        .ant-checkbox-checked .ant-checkbox-inner {
-          background-color: $secondaryaccentTextColor;
-        }
-        .ant-checkbox-wrapper:hover .ant-checkbox:hover .ant-checkbox-inner {
-          background-color: transparent;
-          border-color: $secondaryaccentTextColor;
-        }
+      margin-left: 0;
+      span {
+        font-family: "Nunito", sans-serif;
+        font-size: 12px;
+        padding: 0;
       }
     }
     .registration-date {
@@ -53,7 +46,7 @@
       flex-direction: column;
       width: 100%;
       color: rgba(0, 0, 0, 0.8);
-      p {
+      span {
         padding-left: 12px;
       }
       input {
