@@ -4,17 +4,21 @@
   .nav-container {
     @extend %container;
     .nav-items {
+      padding: 10px 0;
       display: flex;
       gap: 24px;
-      // overflow: hidden;
+      overflow: hidden;
       white-space: nowrap;
       justify-content: center;
       @media (max-width: 1200px) {
         justify-content: start;
-        // flex-wrap: wrap;
+        flex-wrap: wrap;
       }
       @media (max-width: 992px) {
         gap: 20px;
+      }
+      @media (max-width: 440px) {
+        justify-content: center;
       }
     }
   }

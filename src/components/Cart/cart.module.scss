@@ -64,7 +64,7 @@
       .cart-order {
         @include btnStyle(
           $accentTextColor,
-          $secondaryaccentTextColor,
+          $accentBgColor,
           $secondaryaccentHoverColor
         );
       }

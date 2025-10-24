@@ -77,7 +77,7 @@
         max-width: 276px;
         @include btnStyle(
           $accentTextColor,
-          $secondaryaccentTextColor,
+          $accentBgColor,
           $secondaryaccentHoverColor
         );
       }

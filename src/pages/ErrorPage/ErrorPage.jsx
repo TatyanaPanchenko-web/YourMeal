@@ -11,10 +11,7 @@ export default function ErrorPage({ setShowHeader }) {
       <div className={style["error-title"]}> Такой страницы нет</div>
 
       <div className={style["error-img"]}>
-        <img
-          src="/src/assets/firstscreen/firstscreenImg.png"
-          alt="firstscreen-burger"
-        ></img>
+        <img src="/src/assets/icons/pizza.png" alt="pizza"></img>
       </div>
     </div>
   );

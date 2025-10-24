@@ -12,7 +12,7 @@ export default function AuthorizationPage({ setShowHeader, dataAuth }) {
   return (
     <div className={style.autorization}>
       <Autorization dataAuth={dataAuth} />
-      <Link to="/registration" className="link">
+      <Link to="/registration" className="link underline">
         Регистрация
       </Link>
     </div>

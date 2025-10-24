@@ -18,10 +18,10 @@
       border-radius: 5px;
       width: 70px;
       height: 30px;
-      background-color: $secondaryaccentTextColor;
+      background-color: $secondaryaccentHoverColor;
       color: $accentTextColor;
       font-size: 20px;
-      font-weight: 600;
+      font-weight: 400;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -68,6 +68,8 @@
   }
 
   .meal-menu-btn {
+     transition: all 0.8s linear;
     @include btnStyle;
-      }
+    
+  }
 }

@@ -1,19 +1,68 @@
 @import "../../style/vars.scss";
 
 .header {
-  position: absolute;
-  z-index: 10;
-  display: flex;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%);
-  .header-container {
+  &-container {
+    @extend %container;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    @media (max-width: 768px) {
+      justify-content: start;
+    }
     .header-logo {
-      padding-top: 22px;
-      text-align: center;
-      color: $accentTextColor;
+      padding: 10px 0;
+      line-height: 0;
+      width: 120px;
+      height: auto;
       img {
         width: 100%;
+      }
+    }
+    .header-login {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      &-icon {
+        cursor: pointer;
+        width: 26px;
+        height: 26px;
+      }
+      &-inner {
+        position: absolute;
+        top: 55px;
+        right: 0;
+        width: auto;
+        height: auto;
+        background-color: $bgColor;
+        opacity: 0.85;
+        border-radius: 10px;
+        padding: 15px;
+      }
+      &-info {
+        text-align: left;
+        white-space: nowrap;
+      }
+      .header-signout-btn {
+        margin-top: 15px;
+        @include btnStyle(
+          $accentTextColor,
+          $accentBgColor,
+          $secondaryaccentHoverColor
+        );
+      }
+    }
+    .header-signin-btn {
+      padding: 10px 20px;
+      @include btnStyle(
+        $accentTextColor,
+        $accentBgColor,
+        $secondaryaccentHoverColor
+      );
+      a {
+        color: $accentTextColor;
+        font-size: 14px;
+        font-weight: 400;
       }
     }
   }

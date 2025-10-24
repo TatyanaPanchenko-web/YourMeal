@@ -27,27 +27,11 @@
     input::placeholder {
       color: $shadowColor;
     }
-    label {
-      margin-right: 15px;
-      font-size: 10px;
-      :global {
-        .ant-checkbox-inner {
-          border-color: $btnColor;
-        }
-        .ant-checkbox-checked .ant-checkbox-inner {
-          background-color: $secondaryaccentTextColor;
-        }
-        .ant-checkbox-wrapper:hover .ant-checkbox:hover .ant-checkbox-inner {
-          background-color: transparent;
-          border-color: $secondaryaccentTextColor;
-        }
-      }
-    }
 
     input[type="submit"] {
       font-family: "Nunito", sans-serif;
       margin-top: 15px;
-      background-color: $secondaryaccentTextColor;
+      background-color: $accentBgColor;
       color: $accentTextColor;
       font-size: 16px;
       padding: 12px 0;
@@ -59,8 +43,7 @@
       }
     }
     .errorField {
-      font-size: 12px;
-      color: $secondaryaccentTextColor;
+      @extend %errorField;
     }
   }
   &-google {

@@ -82,7 +82,6 @@ export default function Autorization({ dataAuth }) {
             type="password"
             {...register("password", {
               required: "Необходимо заполнить данное поле",
-              // value: `${dataAuth.password}`,
               value: `${dataAuth.password ? dataAuth.password : ""}`,
               minLength: {
                 value: 6,

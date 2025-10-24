@@ -1,28 +1,32 @@
 $accentTextColor: #ffffff;
-$secondaryaccentTextColor: #ff5c00;
-$secondaryaccentHoverColor: #c54800;
-$accentBgColor: #ffab08;
+$accentBgColor: #06cf10;
+$secondaryaccentHoverColor: #04960b;
 $bgColor: #f9f9f9;
 $btnColor: #f2f2f3;
 $textColor: #000000;
 $shadowColor: #b1b1b1;
-
+$errorColor: #fb0404;
 %container {
   max-width: 1330px;
   padding: 0 20px;
   margin: 0 auto;
   @media (max-width: 768px) {
-    padding: 15px;
+    padding: 0 15px;
   }
 }
+%errorField {
+  font-size: 12px;
+  color: $errorColor;
+}
+
 @mixin btnStyle(
   $color: $textColor,
   $bgColor: $btnColor,
-  $hoverColorBg: $secondaryaccentTextColor,
-  $hoverColorText: $accentTextColor
+  $hoverColorBg: $accentBgColor,
+  $hoverColorText: $textColor
 ) {
   font-family: "Nunito", sans-serif;
-  color: $color;
+  color: $textColor;
   background-color: $bgColor;
   display: inline-flex;
   align-items: center;

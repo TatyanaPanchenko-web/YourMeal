@@ -120,7 +120,7 @@
         input[type="submit"] {
           font-family: "Nunito", sans-serif;
           margin-top: 15px;
-          background-color: $secondaryaccentTextColor;
+          background-color: $accentBgColor;
           color: $accentTextColor;
           font-size: 12px;
           padding: 12px 0;
@@ -132,8 +132,7 @@
           }
         }
         .errorField {
-          font-size: 12px;
-          color: $secondaryaccentTextColor;
+          @extend %errorField;
         }
       }
     }

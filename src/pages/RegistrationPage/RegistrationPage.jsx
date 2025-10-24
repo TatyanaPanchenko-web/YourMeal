@@ -19,7 +19,7 @@ export default function RegistrationPage({
       {!regdata.status ? (
         <div className={style.registration}>
           <Registration setRegdata={setRegdata} />
-          <Link to="/authorization" className="link">
+          <Link to="/authorization" className="link underline">
             Авторизация
           </Link>
         </div>

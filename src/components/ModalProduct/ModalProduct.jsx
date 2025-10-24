@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { changeCountCartItem } from "../../common/cartHandler";
 import { addItemCart } from "../../common/cartHandler";
 import style from "./modalProduct.module.scss";

@@ -4,6 +4,7 @@ import MealMenu from "../../components/MealMenu/MealMenu";
 import Cart from "../../components/Cart/Cart";
 import Firstscreen from "../../components/Firstscreen/Firstscreen";
 import Nav from "../../components/Nav/Nav";
+import Loader from "../../components/Loader/Loader";
 import { getData } from "../../services/FB.js";
 import nav from "../../data/nav.json";
 import style from "./mainPage.module.scss";
@@ -58,13 +59,15 @@ export default function MainPage({ dataAuth }) {
       }
     });
   }, [status, activeTab, userUid]);
-  console.log(cartElements);
+
   return (
     <>
       <Firstscreen />
       <Nav nav={nav} activeTab={activeTab} setActiveTab={setActiveTab} />
       {!cartElements.status || !products.status ? (
-        <div className={style.loading}>Loading...</div>
+        <div className={style.loading}>
+          <Loader />
+        </div>
       ) : (
         <section className={style.main}>
           <div className={style["main-container"]}>
