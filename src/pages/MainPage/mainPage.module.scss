@@ -1,8 +1,9 @@
 @import "../../style/vars.scss";
 
 .main {
+  flex: 1 0 auto;
   .main-container {
-    @extend %container;
+       @extend %container;
     .main-wrapper {
       display: grid;
       grid-template-columns: 1fr 3fr;

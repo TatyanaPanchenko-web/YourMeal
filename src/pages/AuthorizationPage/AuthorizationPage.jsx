@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Autorization from "../../components/Autorization/Autorization";
 import style from "./authorizationPage.module.scss";
 
-export default function AuthorizationPage({ setShowHeader, dataAuth }) {
+export default function AuthorizationPage({ setShowHeader, dataAuth, setRegdata }) {
   useEffect(() => {
     setShowHeader(false);
     return () => setShowHeader(true);
@@ -11,7 +11,7 @@ export default function AuthorizationPage({ setShowHeader, dataAuth }) {
 
   return (
     <div className={style.autorization}>
-      <Autorization dataAuth={dataAuth} />
+      <Autorization dataAuth={dataAuth} setRegdata={setRegdata} />
       <Link to="/registration" className="link underline">
         Регистрация
       </Link>

@@ -34,6 +34,7 @@ function App() {
             <AuthorizationPage
               setShowHeader={setShowHeader}
               dataAuth={regdata.data}
+              setRegdata={setRegdata}
             />
           }
         ></Route>

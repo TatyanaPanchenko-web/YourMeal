@@ -6,8 +6,6 @@ import {
   push,
   update,
   remove,
-  set,
-  child,
 } from "firebase/database";
 import { firebaseConfig } from "../../firebaseConfig.js";
 
@@ -15,6 +13,7 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 export function getData(path) {
+
   const dataRef = ref(database, "/" + path);
   return new Promise((resolve, reject) => {
     onValue(
@@ -56,16 +55,16 @@ export function deleteItemCart(uid, key) {
 //   });
 // }
 
-export function addRegData(data, uid) {
-  const user = {
-    name: data.name,
-    email: data.email,
-    data: data.date,
-    promo: data.promo,
-    agreement: data.agreement,
-    uid: uid,
+export function addRegData(user) {
+  const userInfo = {
+    name: user.displayName,
+    email: user.email,
+    data: new Date().toLocaleString(),
+    // promo: data.promo,
+    // agreement: data.agreement,
+    uid: user.uid,
   };
-  return update(ref(database, "users/" + uid), user);
+  return update(ref(database, "users/" + user.uid), userInfo);
 }
 export function addOrderData(address, cartItems, uid) {
   const order = {

@@ -4,6 +4,7 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
+
 const BpIcon = styled("span")(({ theme }) => ({
   marginRight: 7,
   borderRadius: 3,
@@ -15,7 +16,7 @@ const BpIcon = styled("span")(({ theme }) => ({
   backgroundImage:
     "linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))",
   ".Mui-focusVisible &": {
-    outline: "2px auto #ff5c00",
+    outline: "2px auto #06cf10",
     outlineOffset: 2,
   },
   "input:hover ~ &": {
@@ -40,7 +41,7 @@ const BpIcon = styled("span")(({ theme }) => ({
 }));
 
 const BpCheckedIcon = styled(BpIcon)({
-  backgroundColor: "#ff5c00",
+  backgroundColor: "#06cf10",
   backgroundImage:
     "linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))",
   "&::before": {
@@ -54,7 +55,7 @@ const BpCheckedIcon = styled(BpIcon)({
     content: '""',
   },
   "input:hover ~ &": {
-    backgroundColor: "#ff5c00",
+    backgroundColor: "#06cf10",
   },
 });
 

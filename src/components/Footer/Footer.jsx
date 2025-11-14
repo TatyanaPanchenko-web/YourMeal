@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
         </div>
         <div className={style["footer-bottom"]}>
-          <div>© YouMeal, 2024</div>
+          <div>© Food, 2024</div>
         </div>
       </div>
     </footer>

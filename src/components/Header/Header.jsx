@@ -22,6 +22,7 @@ export default function Header() {
         setUserInfo(null);
       }
     });
+
     document.addEventListener("click", handleClick);
     return () => {
       listenUser();
@@ -40,7 +41,7 @@ export default function Header() {
         setUserInfo(null);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
   return (

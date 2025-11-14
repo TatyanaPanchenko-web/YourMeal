@@ -8,6 +8,7 @@ export default function MealMenu({
   activeTab,
   userUid,
 }) {
+
   return (
     <div className={style["meal-menu"]}>
       <div className={style["meal-menu-title"]}>{activeTab.name}</div>

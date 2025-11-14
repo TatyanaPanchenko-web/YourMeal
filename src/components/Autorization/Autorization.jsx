@@ -6,11 +6,14 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  signInWithRedirect,
+  getRedirectResult,
 } from "firebase/auth";
+import { addRegData } from "../../services/FB";
 import iconGoogle from "../../assets/icons/google.png";
 import style from "./autorization.module.scss";
 
-export default function Autorization({ dataAuth }) {
+export default function Autorization({ dataAuth, setRegdata }) {
   const [errBase, setErrBase] = useState(false);
   const {
     register,
@@ -32,29 +35,33 @@ export default function Autorization({ dataAuth }) {
   };
   const loginGoogle = () => {
     const provider = new GoogleAuthProvider();
-
     signInWithPopup(auth, provider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
-        // The signed-in user info.
+
         const user = result.user;
+        addRegData(user);
+        setRegdata({ data: user, status: true });
+
         navigate("/");
         // IdP data available using getAdditionalUserInfo(result)
         // ...
       })
       .catch((error) => {
+        console.error("Error!!!", error);
         // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
         // The email of the user's account used.
-        const email = error.customData.email;
+        // const email = error.customData.email;
         // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
+        // const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
       });
   };
+
   return (
     <div className={style.autorization}>
       <div className={style["autorization-wrapper"]}>

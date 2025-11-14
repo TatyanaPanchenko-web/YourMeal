@@ -66,7 +66,14 @@ export default function ModalProduct({
                   onClick={() => {
                     cartElements.map((el, index) => {
                       if (el.id === item.id) {
-                        changeCountCartItem(false, userUid, el, upload, index);
+                        changeCountCartItem(
+                          cartElements,
+                          false,
+                          userUid,
+                          el,
+                          upload,
+                          index
+                        );
                       }
                     });
                   }}
@@ -101,7 +108,14 @@ export default function ModalProduct({
                     }
                     cartElements.map((el, index) => {
                       if (el.id === item.id) {
-                        changeCountCartItem(true, userUid, el, upload, index);
+                        changeCountCartItem(
+                          cartElements,
+                          true,
+                          userUid,
+                          el,
+                          upload,
+                          index
+                        );
                       }
                     });
                   }}

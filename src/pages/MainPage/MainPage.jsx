@@ -17,7 +17,6 @@ export default function MainPage({ dataAuth }) {
     status: false,
   });
   const [userUid, setUserUid] = useState(null);
-  console.log(userUid, cartElements);
   const [status, setStatus] = useState(false);
   const upload = {
     status,
@@ -45,12 +44,13 @@ export default function MainPage({ dataAuth }) {
 
   useEffect(() => {
     const productsServer = getData(`products/${activeTab.product_name}`);
-    const cartServer = getData("cart/" + userUid);
+    const cartServer = getData(`cart/${userUid ? userUid : ""}`);
+
     Promise.allSettled([productsServer, cartServer]).then((results) => {
       if (results[0].status === "fulfilled") {
         setProducts({ data: results[0].value || [], status: true });
       }
-      if (results[1].status === "fulfilled") {
+      if (results[1].status === "fulfilled" && userUid) {
         setCartElements({
           data: results[1].value ? Object.values(results[1]?.value) : [],
           dataKeys: results[1].value ? Object.keys(results[1]?.value) : [],
@@ -58,6 +58,15 @@ export default function MainPage({ dataAuth }) {
         });
       }
     });
+
+    if (!userUid) {
+      if (localStorage.getItem("cart")) {
+        const localCart = JSON.parse(localStorage.getItem("cart"));
+        setCartElements({ data: localCart, status: true });
+      } else {
+        setCartElements({ data: [], status: true });
+      }
+    }
   }, [status, activeTab, userUid]);
 
   return (

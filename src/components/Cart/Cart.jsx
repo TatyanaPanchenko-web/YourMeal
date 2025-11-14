@@ -29,6 +29,9 @@ export default function Cart({
   };
 
   const handleDeleteCart = (userUid) => {
+    if (!userUid) {
+      localStorage.removeItem("cart");
+    }
     deleteAllCart(userUid);
     upload.setStatus((prev) => !prev);
   };
@@ -70,6 +73,7 @@ export default function Cart({
                   upload={upload}
                   activeTab={activeTab}
                   userUid={userUid}
+                  cartElements={cartElements}
                 />
               );
             })}

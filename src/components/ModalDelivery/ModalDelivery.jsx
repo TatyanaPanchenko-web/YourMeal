@@ -34,8 +34,6 @@ export default function modalDelivery({
     formState: { errors },
   } = useForm();
 
-  console.log(userUIdFB);
-
   const { ref, ...rest } = register("phone", {
     required: "Необходимо заполнить данное поле",
     minLength: {

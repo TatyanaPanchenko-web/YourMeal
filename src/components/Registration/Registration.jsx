@@ -8,6 +8,7 @@ import style from "./registration.module.scss";
 
 export default function Registration({ setRegdata }) {
   const [errorDate, setErrorDate] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -23,7 +24,6 @@ export default function Registration({ setRegdata }) {
 
   const auth = getAuth();
   const onSubmit = (data) => {
-    console.log(data);
     createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -37,21 +37,23 @@ export default function Registration({ setRegdata }) {
   };
 
   const validateDate = (value) => {
-    // Check if the input has at least 10 characters (e.g., "YYYY-MM-DD")
     if (value.length === 10) {
-      // Validate date using validator's isDate function
-      if (
-        validator.isDate(value, {
-          format: "DD-MM-YYYY",
-          strictMode: true,
-        })
-      ) {
-        setErrorDate("Valid Date :)");
+      const isValidDateFormat = validator.isDate(value, {
+        format: "YYYY-MM-DD",
+        strictMode: true,
+      });
+
+      const currentValue = new Date(value);
+      const min = new Date("1900-01-01");
+      const max = new Date("2020-01-01");
+
+      if (isValidDateFormat && currentValue >= min && currentValue <= max) {
+        setErrorDate("");
       } else {
-        setErrorDate("Enter Valid Date! Use format YYYY-MM-DD.");
+        setErrorDate("Дата выходит за границы");
       }
     } else {
-      setErrorDate("Enter Valid Date! Use format YYYY-MM-DD.");
+      setErrorDate("Введите корректную дату в формате DD-MM-YYYY");
     }
   };
 
@@ -101,14 +103,11 @@ export default function Registration({ setRegdata }) {
             <span> Дата рождения</span>
 
             <input
-              onChange={(e) => {
-                validateDate(e.target.value);
-              }}
               placeholder="Дата рождения"
               type="date"
-              min="1900-01-01"
               max="2025-01-01"
               {...register("date", {
+                onChange: (e) => validateDate(e.target.value),
                 required: "Необходимо заполнить данное поле",
               })}
             />
