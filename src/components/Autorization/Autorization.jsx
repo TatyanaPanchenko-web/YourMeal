@@ -6,15 +6,16 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
-  signInWithRedirect,
-  getRedirectResult,
-} from "firebase/auth";
+ } from "firebase/auth";
 import { addRegData } from "../../services/FB";
 import iconGoogle from "../../assets/icons/google.png";
 import style from "./autorization.module.scss";
 
 export default function Autorization({ dataAuth, setRegdata }) {
-  const [errBase, setErrBase] = useState(false);
+  const [errAuth, setErrAuth] = useState({
+    status: false,
+    message: "",
+  });
   const {
     register,
     handleSubmit,
@@ -30,35 +31,23 @@ export default function Autorization({ dataAuth, setRegdata }) {
       })
       .catch((error) => {
         console.error(error.message);
-        setErrBase(true);
+        setErrAuth({ status: true, message: "Неверный e-mail или пароль" });
       });
   };
+
   const loginGoogle = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-
         const user = result.user;
         addRegData(user);
         setRegdata({ data: user, status: true });
 
         navigate("/");
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
       })
       .catch((error) => {
-        console.error("Error!!!", error);
-        // Handle Errors here.
-        // const errorCode = error.code;
-        // const errorMessage = error.message;
-        // The email of the user's account used.
-        // const email = error.customData.email;
-        // The AuthCredential type that was used.
-        // const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
+        console.error(error.message);
+        setErrAuth({ status: true, message: "Ошибка авторизации Google" });
       });
   };
 
@@ -66,10 +55,14 @@ export default function Autorization({ dataAuth, setRegdata }) {
     <div className={style.autorization}>
       <div className={style["autorization-wrapper"]}>
         <div className={style["autorization-title"]}>Авторизация</div>
+
         <form
           className={style["autorization-form"]}
           onSubmit={handleSubmit(onSubmit)}
         >
+          {errAuth.status && (
+            <div className={`${style.errorField} ${style.auth}`}>{errAuth.message}</div>
+          )}
           <input
             placeholder="E-mail"
             {...register("mail", {
@@ -98,9 +91,6 @@ export default function Autorization({ dataAuth, setRegdata }) {
           />
           {errors.password && (
             <p className={style.errorField}>{errors.password?.message}</p>
-          )}
-          {errBase && (
-            <div className={style.errorField}>Неверный e-mail или пароль</div>
           )}
 
           <input type="submit" value="Войти" />

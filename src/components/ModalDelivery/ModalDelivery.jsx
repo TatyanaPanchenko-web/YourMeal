@@ -16,7 +16,7 @@ export default function modalDelivery({
   const [currentUser, setCurrentUser] = useState(null);
   const [cartItems, setCartItems] = useState(null);
   const userUIdFB = getAuth().currentUser.uid;
-
+ 
   useEffect(() => {
     if (userUIdFB) {
       getData(`users/${userUIdFB}`).then((result) => {
@@ -84,9 +84,9 @@ export default function modalDelivery({
             >
               <input
                 placeholder="Ваше имя"
+                value={`${currentUser?.name ? currentUser?.name : ""}`}
                 {...register("firstName", {
                   required: "Необходимо заполнить данное поле",
-                  value: `${currentUser?.name ? currentUser?.name : ""}`,
                   minLength: {
                     value: 2,
                     message: "Некорректное значение",

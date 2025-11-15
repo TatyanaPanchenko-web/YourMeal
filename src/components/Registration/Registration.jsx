@@ -8,6 +8,10 @@ import style from "./registration.module.scss";
 
 export default function Registration({ setRegdata }) {
   const [errorDate, setErrorDate] = useState("");
+  const [errAuth, setErrAuth] = useState({
+    status: false,
+    message: "",
+  });
 
   const {
     register,
@@ -31,7 +35,8 @@ export default function Registration({ setRegdata }) {
         setRegdata({ data: data, status: true });
       })
       .catch((error) => {
-        console.error(error);
+        console.error(error.message);
+        setErrAuth({ status: true, message: "Пользователь с таким email уже существует" })
       });
     reset();
   };
@@ -64,6 +69,11 @@ export default function Registration({ setRegdata }) {
         className={style["registration-form"]}
         onSubmit={handleSubmit(onSubmit)}
       >
+        {errAuth.status && (
+          <div className={`${style.errorField} ${style.auth}`}>
+            {errAuth.message}
+          </div>
+        )}
         <div className={style["registration-inner"]}>
           <input
             placeholder="Имя"
