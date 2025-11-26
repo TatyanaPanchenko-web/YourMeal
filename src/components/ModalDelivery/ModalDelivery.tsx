@@ -1,38 +1,38 @@
-import { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { getAuth } from "firebase/auth";
+import { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { useMask } from "@react-input/mask";
-import { getData, addOrderData } from "../../services/FB";
+import { addOrderData } from "../../services/FB";
 import { deleteAllCart } from "../../services/FB";
+import {
+  UserInfoType,
+  DataProductsType,
+  UploadType,
+  ModalFormType,
+} from "../../types/index";
 import style from "./modalDelivery.module.scss";
 
-export default function modalDelivery({
+type ModalDeliveryPropsType = {
+  setModalDeliveryStatus: React.Dispatch<React.SetStateAction<boolean>>;
+  setSubmittedSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+  cartElements: DataProductsType[];
+  dataAuth: UserInfoType;
+  upload: UploadType;
+};
+
+export default function ModalDelivery({
   setModalDeliveryStatus,
   setSubmittedSuccess,
+  cartElements,
   dataAuth,
   upload,
-}) {
+}: ModalDeliveryPropsType) {
   const [choiceDelivery, setChoiceDelivery] = useState("carrier");
-  const [currentUser, setCurrentUser] = useState(null);
-  const [cartItems, setCartItems] = useState(null);
-  const userUIdFB = getAuth().currentUser.uid;
- 
-  useEffect(() => {
-    if (userUIdFB) {
-      getData(`users/${userUIdFB}`).then((result) => {
-        setCurrentUser(result);
-      });
-      getData("cart").then((result) => {
-        setCartItems(result);
-      });
-    }
-  }, []);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<ModalFormType>();
 
   const { ref, ...rest } = register("phone", {
     required: "Необходимо заполнить данное поле",
@@ -42,15 +42,15 @@ export default function modalDelivery({
     },
   });
 
-  const inputPhoneRef = useMask({
+  const inputPhoneRef: React.RefObject<HTMLInputElement> = useMask({
     mask: "+___ (__) ___-__-__",
     replacement: { _: /\d/ },
   });
 
-  const onSubmit = (data, userUIdFB) => {
-    // updateOrderData(data);
-    addOrderData(data, cartItems, userUIdFB);
-    upload.setStatus((prev) => !prev);
+  const userUIdFB: string = dataAuth.uid;
+  const onSubmit: SubmitHandler<ModalFormType> = (data) => {
+    addOrderData(data, cartElements, userUIdFB);
+    upload.setStatus((prev: boolean) => !prev);
     deleteAllCart(userUIdFB);
     setModalDeliveryStatus(false);
     setSubmittedSuccess(true);
@@ -84,7 +84,7 @@ export default function modalDelivery({
             >
               <input
                 placeholder="Ваше имя"
-                value={`${currentUser?.name ? currentUser?.name : ""}`}
+                value={`${dataAuth?.name ? dataAuth?.name : ""}`}
                 {...register("firstName", {
                   required: "Необходимо заполнить данное поле",
                   minLength: {
@@ -108,7 +108,9 @@ export default function modalDelivery({
                 {...rest}
                 ref={(e) => {
                   ref(e);
-                  inputPhoneRef.current = e;
+                  if (e) {
+                    inputPhoneRef.current = e;
+                  }
                 }}
               />
               {errors.phone && (

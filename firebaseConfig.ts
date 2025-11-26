@@ -1,5 +1,15 @@
-// Import the functions you need from the SDKs you need
-export const firebaseConfig = {
+export type FirebaseConfigType = {
+  apiKey: string,
+  authDomain: string,
+  databaseURL: string,
+  projectId: string,
+  storageBucket: string,
+  messagingSenderId: string,
+  appId: string,
+  measurementId: string,
+};
+
+export const firebaseConfig:FirebaseConfigType = {
   apiKey: import.meta.env.VITE_API_KEY,
   authDomain: import.meta.env.VITE_AUTH_DOMAIN,
   databaseURL: import.meta.env.VITE_DATABASE_URL,

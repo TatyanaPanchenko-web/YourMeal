@@ -1,13 +1,21 @@
 import ProductItem from "../ProductItem/ProductItem";
+import { DataProductsType, UploadType, NavItemType } from "../../types/index";
 import style from "./mealMenu.module.scss";
 
+type MealMenuPropsType = {
+  products: DataProductsType[];
+  upload: UploadType;
+  cartElements: DataProductsType[];
+  activeTab: NavItemType;
+  userUid: string | undefined;
+};
 export default function MealMenu({
   products,
   upload,
   cartElements,
   activeTab,
   userUid,
-}) {
+}: MealMenuPropsType) {
 
   return (
     <div className={style["meal-menu"]}>

@@ -1,17 +1,27 @@
 import { useState } from "react";
 import { addItemCart } from "../../common/cartHandler";
 import ModalProduct from "../../components/ModalProduct/ModalProduct";
+import { DataProductsType, UploadType, NavItemType } from "../../types/index";
 import style from "./productItem.module.scss";
+
+type ProductItemPropsType = {
+  item: DataProductsType;
+  index: number;
+  upload: UploadType;
+  cartElements: DataProductsType[];
+  userUid: string | undefined;
+  activeTab: NavItemType;
+};
 
 export default function ProductItem({
   item,
   index,
   upload,
   cartElements,
-  activeTab,
   userUid,
-}) {
-  const [modalProductStatus, setModalProductStatus] = useState(false);
+  activeTab,
+}: ProductItemPropsType) {
+  const [modalProductStatus, setModalProductStatus] = useState<boolean>(false);
   const imgUrl = `products/${activeTab.product_name}/${activeTab.product_name}_${index}.png`;
   const { name, weight, price, promotion } = item;
   return (
@@ -49,7 +59,6 @@ export default function ProductItem({
             imgUrl={imgUrl}
             upload={upload}
             cartElements={cartElements}
-            modalProductStatus={modalProductStatus}
             setModalProductStatus={setModalProductStatus}
             userUid={userUid}
           />

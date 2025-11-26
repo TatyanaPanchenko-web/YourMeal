@@ -1,7 +1,11 @@
 import { useEffect } from "react";
 import style from "./errorPage.module.scss";
 
-export default function ErrorPage({ setShowHeader }) {
+type ErrorPagePropsType = {
+  setShowHeader: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export default function ErrorPage({ setShowHeader }:ErrorPagePropsType) {
   useEffect(() => {
     setShowHeader(false);
     return () => setShowHeader(true);

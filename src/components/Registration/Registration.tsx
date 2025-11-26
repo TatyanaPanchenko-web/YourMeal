@@ -1,14 +1,26 @@
 import { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import validator from "validator";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  UserCredential,
+} from "firebase/auth";
 import CustomizedCheckbox from "./CustomizedCheckbox";
 import { addRegData } from "../../services/FB";
+import type { RegFormType } from "../../types/index";
 import style from "./registration.module.scss";
 
-export default function Registration({ setRegdata }) {
-  const [errorDate, setErrorDate] = useState("");
-  const [errAuth, setErrAuth] = useState({
+type RegistrationPropsType = {
+  setRegdata: React.Dispatch<React.SetStateAction<boolean>>;
+};
+type errAuthType = {
+  status: boolean;
+  message: string;
+};
+export default function Registration({ setRegdata }: RegistrationPropsType) {
+  const [errorData, setErrorData] = useState<string>("");
+  const [errAuth, setErrAuth] = useState<errAuthType>({
     status: false,
     message: "",
   });
@@ -20,28 +32,31 @@ export default function Registration({ setRegdata }) {
     getValues,
     reset,
     formState: { errors },
-  } = useForm({
+  } = useForm<RegFormType>({
     defaultValues: {
       promo: false,
     },
   });
 
   const auth = getAuth();
-  const onSubmit = (data) => {
+  const onSubmit: SubmitHandler<RegFormType> = (data) => {
     createUserWithEmailAndPassword(auth, data.email, data.password)
-      .then((userCredential) => {
+      .then((userCredential: UserCredential) => {
         const user = userCredential.user;
         addRegData(data, user.uid);
-        setRegdata({ data: data, status: true });
+        setRegdata(true);
       })
       .catch((error) => {
         console.error(error.message);
-        setErrAuth({ status: true, message: "Пользователь с таким email уже существует" })
+        setErrAuth({
+          status: true,
+          message: "Пользователь с таким email уже существует",
+        });
       });
     reset();
   };
 
-  const validateDate = (value) => {
+  const validateDate = (value: string) => {
     if (value.length === 10) {
       const isValidDateFormat = validator.isDate(value, {
         format: "YYYY-MM-DD",
@@ -53,12 +68,12 @@ export default function Registration({ setRegdata }) {
       const max = new Date("2020-01-01");
 
       if (isValidDateFormat && currentValue >= min && currentValue <= max) {
-        setErrorDate("");
+        setErrorData("");
       } else {
-        setErrorDate("Дата выходит за границы");
+        setErrorData("Дата выходит за границы");
       }
     } else {
-      setErrorDate("Введите корректную дату в формате DD-MM-YYYY");
+      setErrorData("Введите корректную дату в формате DD-MM-YYYY");
     }
   };
 
@@ -77,7 +92,7 @@ export default function Registration({ setRegdata }) {
         <div className={style["registration-inner"]}>
           <input
             placeholder="Имя"
-            {...register("name", {
+            {...register("displayName", {
               required: "Необходимо заполнить данное поле",
               maxLength: 30,
               minLength: {
@@ -90,8 +105,8 @@ export default function Registration({ setRegdata }) {
               },
             })}
           />
-          {errors.name && (
-            <p className={style.errorField}>{errors.name?.message}</p>
+          {errors.displayName && (
+            <p className={style.errorField}>{errors.displayName?.message}</p>
           )}
 
           <input
@@ -116,15 +131,15 @@ export default function Registration({ setRegdata }) {
               placeholder="Дата рождения"
               type="date"
               max="2025-01-01"
-              {...register("date", {
+              {...register("data", {
                 onChange: (e) => validateDate(e.target.value),
                 required: "Необходимо заполнить данное поле",
               })}
             />
-            {errors.date && (
-              <p className={style.errorField}>{errors.date?.message}</p>
+            {errors.data && (
+              <p className={style.errorField}>{errors.data?.message}</p>
             )}
-            {errorDate && <p className={style.errorField}>{errorDate}</p>}
+            {errorData && <p className={style.errorField}>{errorData}</p>}
           </label>
 
           <input
@@ -138,9 +153,7 @@ export default function Registration({ setRegdata }) {
               },
             })}
           />
-          {errors.password && (
-            <p className={style.errorField}>{errors.password?.message}</p>
-          )}
+
           <input
             placeholder="Подтверждение пароля"
             type="password"
@@ -170,8 +183,8 @@ export default function Registration({ setRegdata }) {
             rules={{ required: true }}
             render={({ field }) => (
               <CustomizedCheckbox
-                {...field}
                 label={"Согласие на обработку персональных данных"}
+                {...field}
               />
             )}
           />
@@ -187,8 +200,8 @@ export default function Registration({ setRegdata }) {
             rules={{ required: false }}
             render={({ field }) => (
               <CustomizedCheckbox
-                {...field}
                 label={"Согласие на получение акционных предложений"}
+                {...field}
               />
             )}
           />

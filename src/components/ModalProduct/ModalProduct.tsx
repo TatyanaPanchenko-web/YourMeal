@@ -1,6 +1,16 @@
 import { changeCountCartItem } from "../../common/cartHandler";
 import { addItemCart } from "../../common/cartHandler";
+import { DataProductsType, UploadType } from "../../types/index";
 import style from "./modalProduct.module.scss";
+
+type ModalProductPropsType = {
+  item: DataProductsType;
+  imgUrl: string;
+  upload: UploadType;
+  cartElements: DataProductsType[];
+  setModalProductStatus:React.Dispatch<React.SetStateAction<boolean>>;
+  userUid: string | undefined;
+};
 
 export default function ModalProduct({
   item,
@@ -9,7 +19,7 @@ export default function ModalProduct({
   cartElements,
   setModalProductStatus,
   userUid,
-}) {
+}:ModalProductPropsType) {
   const { name, weight, price, description, colorie, ingredients } = item;
 
   return (
@@ -99,7 +109,7 @@ export default function ModalProduct({
                       addItemCart(item, userUid, cartElements, upload, imgUrl);
                       return;
                     }
-                    const checkedItem = cartElements.find((el, index) => {
+                    const checkedItem = cartElements.find((el) => {
                       return el.id === item.id;
                     });
                     if (!checkedItem) {

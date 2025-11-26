@@ -1,56 +1,63 @@
 import { useState, useEffect } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import MealMenu from "../../components/MealMenu/MealMenu";
 import Cart from "../../components/Cart/Cart";
 import Firstscreen from "../../components/Firstscreen/Firstscreen";
 import Nav from "../../components/Nav/Nav";
 import Loader from "../../components/Loader/Loader";
 import { getData } from "../../services/FB.js";
-import nav from "../../data/nav.json";
+import { UserInfoType, DataProductsType, NavItemType } from "../../types/index";
 import style from "./mainPage.module.scss";
 
-export default function MainPage({ dataAuth }) {
-  const [products, setProducts] = useState({ data: [], status: false });
-  const [cartElements, setCartElements] = useState({
+type MainPagePropsType = {
+  dataAuth: UserInfoType | null;
+};
+
+export type ProductsState = {
+  data: DataProductsType[];
+  status: boolean;
+};
+
+export type CartState = {
+  data: DataProductsType[];
+  dataKeys: string[] | null;
+  status: boolean;
+};
+export default function MainPage({ dataAuth }: MainPagePropsType) {
+  const [products, setProducts] = useState<ProductsState>({
+    data: [],
+    status: false,
+  });
+  const [cartElements, setCartElements] = useState<CartState>({
     data: [],
     dataKeys: [],
     status: false,
   });
-  const [userUid, setUserUid] = useState(null);
-  const [status, setStatus] = useState(false);
+  const [status, setStatus] = useState<boolean>(false);
   const upload = {
     status,
     setStatus,
     dataKeys: cartElements.dataKeys,
   };
 
-  const [activeTab, setActiveTab] = useState({
+  const [activeTab, setActiveTab] = useState<NavItemType>({
     img: "./nav/burgers.png",
     name: "Бургеры",
     product_name: "burgers",
   });
 
-  const auth = getAuth();
   useEffect(() => {
-    const listenUser = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUserUid(user.uid);
-      }
-    });
-    return () => {
-      listenUser();
-    };
-  }, []);
-
-  useEffect(() => {
-    const productsServer = getData(`products/${activeTab.product_name}`);
-    const cartServer = getData(`cart/${userUid ? userUid : ""}`);
+    const productsServer: Promise<DataProductsType[] | null> = getData(
+      `products/${activeTab.product_name}`
+    );
+    const cartServer: Promise<DataProductsType[] | null> = getData(
+      `cart/${dataAuth?.uid ? dataAuth.uid : ""}`
+    );
 
     Promise.allSettled([productsServer, cartServer]).then((results) => {
       if (results[0].status === "fulfilled") {
         setProducts({ data: results[0].value || [], status: true });
       }
-      if (results[1].status === "fulfilled" && userUid) {
+      if (results[1].status === "fulfilled" && dataAuth?.uid) {
         setCartElements({
           data: results[1].value ? Object.values(results[1]?.value) : [],
           dataKeys: results[1].value ? Object.keys(results[1]?.value) : [],
@@ -59,20 +66,26 @@ export default function MainPage({ dataAuth }) {
       }
     });
 
-    if (!userUid) {
-      if (localStorage.getItem("cart")) {
-        const localCart = JSON.parse(localStorage.getItem("cart"));
-        setCartElements({ data: localCart, status: true });
+    if (!dataAuth?.uid) {
+      const storedCartStr = localStorage.getItem("cart");
+      if (storedCartStr) {
+        try {
+          const localCart: DataProductsType[] = JSON.parse(storedCartStr);
+          setCartElements({ data: localCart, dataKeys: null, status: true });
+        } catch (error) {
+          console.error("Ошибка парсинга корзины из localStorage:", error);
+          setCartElements({ data: [], dataKeys: null, status: true });
+        }
       } else {
-        setCartElements({ data: [], status: true });
+        setCartElements({ data: [], dataKeys: null, status: true });
       }
     }
-  }, [status, activeTab, userUid]);
+  }, [status, activeTab, dataAuth?.uid]);
 
   return (
     <>
       <Firstscreen />
-      <Nav nav={nav} activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Nav activeTab={activeTab} setActiveTab={setActiveTab} />
       {!cartElements.status || !products.status ? (
         <div className={style.loading}>
           <Loader />
@@ -84,16 +97,14 @@ export default function MainPage({ dataAuth }) {
               <Cart
                 cartElements={cartElements.data}
                 upload={upload}
-                activeTab={activeTab.product_name}
                 dataAuth={dataAuth}
-                userUid={userUid}
               />
               <MealMenu
                 products={products.data}
                 cartElements={cartElements.data}
                 upload={upload}
                 activeTab={activeTab}
-                userUid={userUid}
+                userUid={dataAuth?.uid}
               />
             </div>
           </div>

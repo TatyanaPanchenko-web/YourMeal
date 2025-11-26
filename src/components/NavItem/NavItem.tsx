@@ -1,7 +1,16 @@
+import { NavItemType } from "../../types/index";
 import style from "./navItem.module.scss";
 
-export default function NavItem(props) {
-  const { item, activeTab, setActiveTab } = props;
+type NavItemPropsType = {
+  item:NavItemType;
+  activeTab: NavItemType;
+  setActiveTab: React.Dispatch<React.SetStateAction<NavItemType>>;
+};
+export default function NavItem({
+  item,
+  activeTab,
+  setActiveTab,
+}: NavItemPropsType) {
   const activeItem =
     activeTab.product_name === item["product_name"] ? style["active"] : "";
   return (

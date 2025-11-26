@@ -1,49 +1,30 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { getData } from "../../services/FB";
+import { getAuthData } from "../../bll/auth";
 import logo from "../../assets/icons/logo.svg";
 import iconUser from "../../assets/icons/user.svg";
 import style from "./header.module.scss";
 
 export default function Header() {
-  const [userInfo, setUserInfo] = useState(null);
-  const [isOpenInfo, setIsOpenInfo] = useState(false);
+  const [isOpenInfo, setIsOpenInfo] = useState<boolean>(false);
 
-  const auth = getAuth();
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
+  
+  const { userInfo, userSignOut } = getAuthData();
 
   useEffect(() => {
-    const listenUser = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const getUserFromBD = getData(`users/${user.uid}`);
-        getUserFromBD.then((result) => setUserInfo(result));
-      } else {
-        setUserInfo(null);
-      }
-    });
-
     document.addEventListener("click", handleClick);
     return () => {
-      listenUser();
       document.removeEventListener("click", handleClick);
     };
   }, []);
 
-  const handleClick = (e) => {
-    if (ref.current && !ref.current.contains(e.target)) {
+  const handleClick = (e:MouseEvent) => {
+    if (ref.current && !ref?.current?.contains(e.target as Node)) {
       setIsOpenInfo(false);
     }
   };
-  const userSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        setUserInfo(null);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+
   return (
     <header className={style.header}>
       <div className={style["header-container"]}>

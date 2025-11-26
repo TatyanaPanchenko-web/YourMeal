@@ -1,6 +1,10 @@
 import style from "./modalSuccess.module.scss";
 
-export default function modalSuccess({ setSubmittedSuccess }) {
+type ModalSuccessPropsType = {
+  setSubmittedSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+ 
+}; 
+export default function ModalSuccess({ setSubmittedSuccess }:ModalSuccessPropsType) {
   return (
     <div>
       <div

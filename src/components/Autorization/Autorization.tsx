@@ -1,18 +1,29 @@
-import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import {
   getAuth,
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
- } from "firebase/auth";
+  User,
+  UserCredential,
+} from "firebase/auth";
 import { addRegData } from "../../services/FB";
+import { dataAuthType } from "../../types/index";
 import iconGoogle from "../../assets/icons/google.png";
 import style from "./autorization.module.scss";
 
-export default function Autorization({ dataAuth, setRegdata }) {
-  const [errAuth, setErrAuth] = useState({
+type errAuthType = {
+  status: boolean;
+  message: string;
+};
+type errorObjType = {
+  message: string;
+};
+
+export default function Autorization() {
+  const [errAuth, setErrAuth] = useState<errAuthType>({
     status: false,
     message: "",
   });
@@ -20,16 +31,16 @@ export default function Autorization({ dataAuth, setRegdata }) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<dataAuthType>();
   const auth = getAuth();
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    signInWithEmailAndPassword(auth, data.mail, data.password)
+  const onSubmit: SubmitHandler<dataAuthType> = (data) => {
+    signInWithEmailAndPassword(auth, data.email, data.password)
       .then(() => {
         navigate("/");
       })
-      .catch((error) => {
+      .catch((error: errorObjType) => {
         console.error(error.message);
         setErrAuth({ status: true, message: "Неверный e-mail или пароль" });
       });
@@ -38,11 +49,9 @@ export default function Autorization({ dataAuth, setRegdata }) {
   const loginGoogle = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        addRegData(user);
-        setRegdata({ data: user, status: true });
-
+      .then((result: UserCredential) => {
+        const user: User | null = result.user;
+        addRegData(user, user.uid);
         navigate("/");
       })
       .catch((error) => {
@@ -61,28 +70,28 @@ export default function Autorization({ dataAuth, setRegdata }) {
           onSubmit={handleSubmit(onSubmit)}
         >
           {errAuth.status && (
-            <div className={`${style.errorField} ${style.auth}`}>{errAuth.message}</div>
+            <div className={`${style.errorField} ${style.auth}`}>
+              {errAuth.message}
+            </div>
           )}
           <input
             placeholder="E-mail"
-            {...register("mail", {
+            {...register("email", {
               required: "Необходимо заполнить данное поле",
-              value: `${dataAuth.mail ? dataAuth.mail : ""}`,
               pattern: {
                 value: /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/,
                 message: "Поле содержит недопустимые символы",
               },
             })}
           />
-          {errors.mail && (
-            <p className={style.errorField}>{errors.mail?.message}</p>
+          {errors.email && (
+            <p className={style.errorField}>{errors.email?.message}</p>
           )}
           <input
             placeholder="Пароль"
             type="password"
             {...register("password", {
               required: "Необходимо заполнить данное поле",
-              value: `${dataAuth.password ? dataAuth.password : ""}`,
               minLength: {
                 value: 6,
                 message: "Поле должно содержать не менее 6 символов",

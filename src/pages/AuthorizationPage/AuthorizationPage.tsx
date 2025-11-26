@@ -1,9 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Autorization from "../../components/Autorization/Autorization";
 import style from "./authorizationPage.module.scss";
 
-export default function AuthorizationPage({ setShowHeader, dataAuth, setRegdata }) {
+type AuthorizationPagePropsType = {
+  setShowHeader: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export default function AuthorizationPage({
+  setShowHeader,
+}: AuthorizationPagePropsType) {
   useEffect(() => {
     setShowHeader(false);
     return () => setShowHeader(true);
@@ -11,7 +17,7 @@ export default function AuthorizationPage({ setShowHeader, dataAuth, setRegdata 
 
   return (
     <div className={style.autorization}>
-      <Autorization dataAuth={dataAuth} setRegdata={setRegdata} />
+      <Autorization />
       <Link to="/registration" className="link underline">
         Регистрация
       </Link>
