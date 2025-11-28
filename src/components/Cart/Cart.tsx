@@ -22,7 +22,7 @@ export default function Cart({
   const [modalDeliveryStatus, setModalDeliveryStatus] =
     useState<boolean>(false);
   const [submittedSuccess, setSubmittedSuccess] = useState<boolean>(false);
-
+console.log(cartElements)
   const navigate = useNavigate();
 
   const checkPromo = cartElements.filter((item) => item.promotion === true);

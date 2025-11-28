@@ -1,15 +1,6 @@
-import { useEffect } from "react";
 import style from "./errorPage.module.scss";
 
-type ErrorPagePropsType = {
-  setShowHeader: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-export default function ErrorPage({ setShowHeader }:ErrorPagePropsType) {
-  useEffect(() => {
-    setShowHeader(false);
-    return () => setShowHeader(true);
-  }, []);
+export default function ErrorPage() {
   return (
     <div className={style.error}>
       <div className={style["error-title"]}> Такой страницы нет</div>

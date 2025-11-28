@@ -87,9 +87,11 @@ export default function MainPage({ dataAuth }: MainPagePropsType) {
       <Firstscreen />
       <Nav activeTab={activeTab} setActiveTab={setActiveTab} />
       {!cartElements.status || !products.status ? (
-        <div className={style.loading}>
-          <Loader />
-        </div>
+        <section className={style.main}>
+          <div className={style.loading}>
+            <Loader />
+          </div>
+        </section>
       ) : (
         <section className={style.main}>
           <div className={style["main-container"]}>

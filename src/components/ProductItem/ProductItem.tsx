@@ -22,7 +22,7 @@ export default function ProductItem({
   activeTab,
 }: ProductItemPropsType) {
   const [modalProductStatus, setModalProductStatus] = useState<boolean>(false);
-  const imgUrl = `products/${activeTab.product_name}/${activeTab.product_name}_${index}.png`;
+  const imgUrl = `products/${activeTab.product_name}/${activeTab.product_name}_${index}.webp`;
   const { name, weight, price, promotion } = item;
   return (
     <>

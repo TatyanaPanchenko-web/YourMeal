@@ -44,7 +44,7 @@ export default function CartItem({
             );
           }}
         >
-          -
+          −
         </button>
         <div>{count}</div>
         <button

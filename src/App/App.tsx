@@ -29,10 +29,7 @@ export default function App() {
           path="/registration/*"
           element={<RegistrationPage setShowHeader={setShowHeader} />}
         ></Route>
-        <Route
-          path="*"
-          element={<ErrorPage setShowHeader={setShowHeader} />}
-        ></Route>
+        <Route path="*" element={<ErrorPage />}></Route>
       </Routes>
       <Footer />
     </div>

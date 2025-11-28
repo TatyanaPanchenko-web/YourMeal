@@ -22,6 +22,7 @@
       font-weight: 600;
       .item-name {
         margin-bottom: 5px;
+        max-width: 100px;
       }
       .item-weight {
         color: $shadowColor;
@@ -30,10 +31,10 @@
     }
   }
   .item-counter {
-        background-color: $btnColor;
+    background-color: $btnColor;
     border-radius: 12px;
     display: flex;
-    column-gap: 15px;
+    column-gap: 5px;
     justify-content: center;
     align-items: center;
     align-self: center;
@@ -42,8 +43,8 @@
     button {
       background-color: transparent;
       border: none;
-      font-size: 16px;
-      padding: 7px 8px;
+      font-size: 20px;
+      padding: 7px 9px;
       cursor: pointer;
     }
   }
