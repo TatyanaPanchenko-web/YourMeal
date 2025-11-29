@@ -23,18 +23,13 @@ export default defineConfig({
         // Или используем функцию для более гибкого разделения
         manualChunks(id) {
           if (id.includes("node_modules")) {
-            if (id.includes("react")) {
-              return "react"; // создаст отдельный чанк для react
-            }
             if (id.includes("firebase")) {
               return "firebase"; // создаст отдельный чанк для Firebase
-            }
-            if (id.includes("@mui")) {
-              return "mui"; // отдельный чанк для Material UI
             }
             if (id.includes("validator")) {
               return "validator"; // отдельный чанк для validator
             }
+
             return "vendor"; // все из node_modules — в один чанк
           }
         },
